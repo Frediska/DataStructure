@@ -22,10 +22,10 @@ void AddNewElement(DynamicArray* dynamicArray, int element)
 {
     dynamicArray->length++;
 
-    if (dynamicArray->length >= dynamicArray->capacity)
+    /*if (dynamicArray->length >= dynamicArray->capacity)
     {
         ResizeArray(dynamicArray);
-    }
+    }*/
 
     dynamicArray->array[dynamicArray->length - 1] = element;
 }
@@ -44,10 +44,10 @@ void InsertElement(DynamicArray* dynamicArray, int element, int index)
 {
     dynamicArray->length++;
 
-    if (dynamicArray->length >= dynamicArray->capacity)
+    /*if (dynamicArray->length >= dynamicArray->capacity)
     {
         ResizeArray(dynamicArray);
-    }
+    }*/
 
     for (int i = dynamicArray->length - 1; i > index; i--)
     {
@@ -106,25 +106,26 @@ int BinarySearch(DynamicArray* dynamicArray, int element)
         ? -1 : first;
 }
 
-void ResizeArray(DynamicArray* dynamicArray)
-{
-    int capacity = 8;
-    dynamicArray->capacity += capacity;
-
-    int* tempArray = new int[dynamicArray->capacity];
-
-    for (int i = 0; i < dynamicArray->length; i++)
-    {
-        tempArray[i] = dynamicArray->array[i];
-    }
-    
-    delete[] dynamicArray->array;
-    dynamicArray->array = tempArray;
-}
+//void ResizeArray(DynamicArray* dynamicArray)
+//{
+//    int capacity = 8;
+//    dynamicArray->capacity += capacity;
+//
+//    int* tempArray = new int[dynamicArray->capacity];
+//
+//    for (int i = 0; i < dynamicArray->length; i++)
+//    {
+//        tempArray[i] = dynamicArray->array[i];
+//    }
+//    
+//    delete[] dynamicArray->array;
+//    dynamicArray->array = tempArray;
+//    delete[] tempArray;
+//}
 
 void GetRandomArray(DynamicArray* dynamicArray, int length)
 {
-    srand(time(NULL));
+    srand(time(0));
 
     for (int i = 0; i < length; i++)
     {

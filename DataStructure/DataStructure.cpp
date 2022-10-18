@@ -472,104 +472,168 @@ void Task23()
 
 int main()
 {
-	int taskNumber;
-	cout << "Enter task number: ";
-	cin >> taskNumber;
-
-	switch (taskNumber)
+	cout << "1. Task 1.1.1.1. \n2. Task 1.1.1.2. \n3. Task 1.1.2.1."
+		"\n4. Task 1.1.2.2. \n5. Task 1.1.2.3. \n6. Task 1.1.3.1 - 1.1.3.2."
+		"\n7. Task 1.1.3.3. \n8. Task 1.1.3.4. \n9. Task 1.1.4.1."
+		"\n10. Task 1.1.4.2. \n11. Task 1.1.4.3. \n12. Task 1.1.4.4."
+		"\n13. Task 1.1.4.5. \n14. Task 1.1.4.6. \n15. Task 1.1.4.8."
+		"\n16. Task 1.1.5.1. \n17. Task 1.1.5.2. \n18. Task 1.1.5.3."
+		"\n19. Task 1.1.5.4. \n20. Task 1.1.5.5. \n21. Task 1.1.5.5."
+		"\n22. Task 1.1.5.6. \n23. Task 1.1.5.7.\n";
+	
+	while (true)
 	{
-    case 1:
-        cout << "Task 1.1.1.1:\n";
-        Task1();
-        break;
-	case 2:
-		cout << "Task 1.1.1.2:\n";
-		Task2();
-		break;
-	case 3:
-		cout << "Task 1.1.2.1:\n";
-		Task3();
-		break;
-	case 4:
-		cout << "Task 1.1.2.2:\n";
-		Task4();
-		break;
-	case 5:
-		cout << "Task 1.1.2.3:\n";
-		Task5();
-		break;
-	case 6:
-		cout << "Task 1.1.3.1 - 1.1.3.2:\n";
-		Task6();
-		break;
-	case 7:
-		cout << "Task 1.1.3.3:\n";
-		Task7();
-		break;
-	case 8:
-		cout << "Task 1.1.3.4:\n";
-		Task8();
-		break;
-	case 9:
-		cout << "Task 1.1.4.1:\n";
-		Task9();
-		break;
-	case 10:
-		cout << "Task 1.1.4.2:\n";
-		Task10();
-		break;
-	case 11:
-		cout << "Task 1.1.4.3:\n";
-		Task11();
-		break;
-	case 12:
-		cout << "Task 1.1.4.4:\n";
-		Task12();
-		break;
-	case 13:
-		cout << "Task 1.1.4.5:\n";
-		Task13();
-		break;
-	case 14:
-		cout << "Task 1.1.4.6:\n";
-		Task14();
-		break;
-	case 15:
-		cout << "Task 1.1.4.8:\n";
-		Task15();
-		break;
-	case 16:
-		cout << "Task 1.1.5.1:\n";
-		Task16();
-		break;
-	case 17:
-		cout << "Task 1.1.5.2:\n";
-		Task17();
-		break;
-	case 18:
-		cout << "Task 1.1.5.3:\n";
-		Task18();
-		break;
-	case 19:
-		cout << "Task 1.1.5.4:\n";
-		Task19();
-		break;
-	case 20:
-		cout << "Task 1.1.5.5:\n";
-		Task20();
-		break;
-	case 21:
-		cout << "Task 1.1.5.5:\n";
-		Task21();
-		break;
-	case 22:
-		cout << "Task 1.1.5.6:\n";
-		Task22();
-		break;
-	case 23:
-		cout << "Task 1.1.5.7:\n";
-		Task23();
-		break;
+		int taskNumber;
+		cout << "\nEnter task number: ";
+		cin >> taskNumber;
+		cout << "\n";
+
+		switch (taskNumber)
+		{
+		case 1:
+		{
+			cout << "Task 1.1.1.1:\n";
+			Task1();
+			break;
+		}
+		case 2:
+		{
+			cout << "Task 1.1.1.2:\n";
+			Task2();
+			break;
+		}	
+		case 3:
+		{
+			cout << "Task 1.1.2.1:\n";
+			Task3();
+			break;
+		}		
+		case 4:
+		{
+			cout << "Task 1.1.2.2:\n";
+			Task4();
+			break;
+		}
+		case 5:
+		{
+			cout << "Task 1.1.2.3:\n";
+			Task5();
+			break;
+		}		
+		case 6:
+		{
+			cout << "Task 1.1.3.1 - 1.1.3.2:\n";
+			Task6();
+			break;
+		}	
+		case 7:
+		{
+			cout << "Task 1.1.3.3:\n";
+			Task7();
+			break;
+		}	
+		case 8:
+		{
+			cout << "Task 1.1.3.4:\n";
+			Task8();
+			break;
+		}
+		case 9:
+		{
+			cout << "Task 1.1.4.1:\n";
+			Task9();
+			break;
+		}	
+		case 10:
+		{
+			cout << "Task 1.1.4.2:\n";
+			Task10();
+			break;
+		}	
+		case 11:
+		{
+			cout << "Task 1.1.4.3:\n";
+			Task11();
+			break;
+		}		
+		case 12:
+		{
+			cout << "Task 1.1.4.4:\n";
+			Task12();
+			break;
+		}		
+		case 13:
+		{
+			cout << "Task 1.1.4.5:\n";
+			Task13();
+			break;
+		}	
+		case 14:
+		{
+			cout << "Task 1.1.4.6:\n";
+			Task14();
+			break;
+		}		
+		case 15:
+		{
+			cout << "Task 1.1.4.8:\n";
+			Task15();
+			break;
+		}	
+		case 16:
+		{
+			cout << "Task 1.1.5.1:\n";
+			Task16();
+			break;
+		}	
+		case 17:
+		{
+			cout << "Task 1.1.5.2:\n";
+			Task17();
+			break;
+		}
+		case 18:
+		{
+			cout << "Task 1.1.5.3:\n";
+			Task18();
+			break;
+		}	
+		case 19:
+		{
+			cout << "Task 1.1.5.4:\n";
+			Task19();
+			break;
+		}	
+		case 20:
+		{
+			cout << "Task 1.1.5.5:\n";
+			Task20();
+			break;
+		}	
+		case 21:
+		{
+			cout << "Task 1.1.5.5:\n";
+			Task21();
+			break;
+		}
+		case 22:
+		{
+			cout << "Task 1.1.5.6:\n";
+			Task22();
+			break;
+		}	
+		case 23:
+		{
+			cout << "Task 1.1.5.7:\n";
+			Task23();
+			break;
+		}	
+		default:
+		{
+			cout << "Enter correct value!";
+			break;
+		}
+		}
 	}
 }
 
