@@ -71,17 +71,23 @@ void SortArray(DynamicArray* dynamicArray)
     }
 }
 
-int LinearSearch(DynamicArray* dynamicArray, int element)
+void LinearSearch(DynamicArray* dynamicArray, int element)
 {
+    bool flag = false;
+
     for (int i = 0; i < dynamicArray->length; i++)
     {
         if (dynamicArray->array[i] = element)
         {
-            return i;
-            cout << i;
+            cout << "Index of this element: " << i << endl;
+            flag = true;
+            return;
         }
     }
-    return -1;
+    if (flag == false)
+    {
+        cout << "There is no such value in the array." << endl;
+    }
 }
 
 int BinarySearch(DynamicArray* dynamicArray, int element)
@@ -228,7 +234,7 @@ int main()
         }
         default:
         {
-            cout << "Enter correct value!";
+            cout << "Enter correct value! \n";
             break;
         }
         }

@@ -8,8 +8,10 @@ void Task1()
     double sum = 0.0;
     for (int i = 0; i < 10; i++)
     {
-        sum += add * i; /* 0.0, 1.1000000000000001, 3.5200000000000005, 7.5130000000000017, 13.369400000000004,
-                        21.421950000000010, 32.051316000000014, 45.692335700000022, 62.841046180000035, 84.0626*/
+        sum += add * i; /* 0.0, 1.1000000000000001, 3.5200000000000005, 
+						7.5130000000000017, 13.369400000000004,
+                        21.421950000000010, 32.051316000000014, 45.692335700000022, 
+						62.841046180000035, 84.0626*/
         cout << "Current sum value is " << sum << endl;
         add *= 1.1;
     }
@@ -66,7 +68,8 @@ void Task3()
 
 void Task4()
 {
-	double array[12] = { 10.2, -12.41, 54.93, 23.8, -31.99, -1.23, 84.2, 3.3, 6.12, -12.56, -92.32, 9.1 };
+	double array[12] = { 10.2, -12.41, 54.93, 23.8, -31.99, -1.23, 84.2, 
+		3.3, 6.12, -12.56, -92.32, 9.1 };
 	cout << "Main array: " << endl;
 	for (int i = 0; i < 12; i++)
 	{
@@ -81,7 +84,8 @@ void Task4()
 		if (array[i] >= searchingValue)
 			countElements += 1;
 	}
-	cout << "Count of array elements which greater or equal than " << searchingValue << ": " << countElements;
+	cout << "Count of array elements which greater or equal than " << 
+		searchingValue << ": " << countElements;
 }
 
 void Task5()
@@ -358,7 +362,8 @@ void Sorting(double* array)
 
 void Task19()
 {
-	double* arrayDouble = new double[10]{ 13.0, 1.0, - 10.2, - 2.5, 32.6, 18.4, 0.5, - 4.5, 16.7, 9.5 };
+	double* arrayDouble = new double[10]{ 13.0, 1.0, - 10.2, - 2.5, 32.6, 
+		18.4, 0.5, - 4.5, 16.7, 9.5 };
 	cout << "Array of double: " << endl;
 	for (int i = 0; i < 10; i++)
 	{
@@ -387,7 +392,8 @@ void Task20()
 void Task21()
 {
 	int countElements = 0;
-	char* arrayChar = new char[15]{'a', '2', '?', 'v', '*', '5', 'k', 'l', ')', 'e', '9', '3', 'm', 'z', '('};
+	char* arrayChar = new char[15]{'a', '2', '?', 'v', '*', '5', 'k', 'l', ')', 
+		'e', '9', '3', 'm', 'z', '('};
 	cout << "Char array is:" << endl;
 	for (int i = 0; i < 15; i++)
 	{
@@ -461,11 +467,13 @@ void Task23()
 {
 	int count = 3;
 	int* values = ReadArray(count);
-	cout << "Count is: " << CountPositiveValues(values, count) << " " << &values << endl;
+	cout << "Count is: " << CountPositiveValues(values, count) << " " << 
+		&values << endl;
 
 	count = 5;
 	values = ReadArray(count);
-	cout << "Count is: " << CountPositiveValues(values, count) << " " << &values << endl;
+	cout << "Count is: " << CountPositiveValues(values, count) << " " << 
+		&values << endl;
 
 	delete[] values;
 }
