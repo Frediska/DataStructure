@@ -198,14 +198,17 @@ void Task10()
 {
 	int a[10] = { 1, 2, 7, -1, 5, 3, -1, 7, 1, 6 };
 	cout << "Size of int type: " << sizeof(int) << endl;
+	
 	for (int i = 0; i < 10; i++)
 	{
 		cout << "Address of a[" << i << "]: " << &a[i] << endl;
 	}
+	
 	cout << endl;
 	cout << "Size of double type: " << sizeof(double) << endl;
-	double b[10] = { 1.0, 2.0, 7.0, -1.0, 5.0, 3.5, -1.8, 7.2, 1.9, 6.2
-	};
+	
+	double b[10] = { 1.0, 2.0, 7.0, -1.0, 5.0, 3.5, -1.8, 7.2, 1.9, 6.2 };
+	
 	for (int i = 0; i < 10; i++)
 	{
 		cout << "Address of b[" << i << "]: " << &b[i] << endl;
@@ -302,22 +305,25 @@ void Task16()
 {
 	double* arrayDouble = new double[8]{ 1.0, 15.0, -8.2, -3.5, 12.6, 38.4, -0.5, 4.5 };
 	cout << "Array of double: " << endl;
+	
 	for (int i = 0; i < 8; i++)
 	{
 		cout << arrayDouble[i] << " ";
 	}
+	
 	delete[] arrayDouble;
 }
 
 void Task17()
 {
 	bool* arrayBool = new bool[8]{ true, false, true, true, false, true, false, false};
-
 	cout << "Array of bool: " << endl;
+
 	for (int i = 0; i < 8; i++)
 	{
 		cout << arrayBool[i] << " ";
 	}
+	
 	delete[] arrayBool;
 }
 
@@ -327,6 +333,7 @@ void Task18()
 	cout << "Enter size of your char array: ";
 	cin >> n;
 	char* arrayChar = new char[n] {};
+	
 	for (int i = 0; i < n; i++)
 	{
 		cout << "Enter a[" << i << "] = ";
@@ -334,6 +341,7 @@ void Task18()
 		cout << endl;
 	}
 	cout << "Your char array is: " << endl;
+	
 	for (int i = 0; i < n; i++)
 	{
 		cout << arrayChar[i] << " ";
@@ -354,6 +362,7 @@ void Sorting(double* array)
 		swap(array[startIndex], array[smallestIndex]);
 	}
 	cout << "\nSorted array: " << endl;
+	
 	for (int i = 0; i < 10; i++)
 	{
 		cout << array[i] << " ";
@@ -365,11 +374,13 @@ void Task19()
 	double* arrayDouble = new double[10]{ 13.0, 1.0, - 10.2, - 2.5, 32.6, 
 		18.4, 0.5, - 4.5, 16.7, 9.5 };
 	cout << "Array of double: " << endl;
+	
 	for (int i = 0; i < 10; i++)
 	{
 		cout << arrayDouble[i] << " ";
 	}
 	Sorting(arrayDouble);
+	
 	delete[] arrayDouble;
 }
 
@@ -379,6 +390,7 @@ void Task20()
 	cout << "Enter searching value: ";
 	cin >> customValue;
 	int* arrayInt = new int[10]{ 10, 12, - 1, - 6, 1, 38, 0, 2, 16, 2 };
+	
 	for (int i = 0; i < 10; i++)
 	{
 		if (arrayInt[i] == customValue)
@@ -386,6 +398,7 @@ void Task20()
 			cout << "Index of searching value " << customValue << " is: " << i << endl;
 		}
 	}
+	
 	delete[] arrayInt;
 }
 
@@ -395,11 +408,13 @@ void Task21()
 	char* arrayChar = new char[15]{'a', '2', '?', 'v', '*', '5', 'k', 'l', ')', 
 		'e', '9', '3', 'm', 'z', '('};
 	cout << "Char array is:" << endl;
+	
 	for (int i = 0; i < 15; i++)
 	{
 		cout << arrayChar[i] << " ";
 	}
 	cout << "\nAll letters in your array: " << endl;
+	
 	for (int i = 0; i < 15; i++)
 	{
 		if (isalpha(arrayChar[i]))
@@ -408,6 +423,7 @@ void Task21()
 			countElements += 1;
 		}
 	}
+	
 	delete[] arrayChar;
 	cout << "\nCount of letter in char array is: " << countElements;
 }
@@ -415,14 +431,16 @@ void Task21()
 int* MakeRandomArray(int arraySize)
 {
 	int* arrayInt = new int[arraySize] {};
-	int num;
+	int number;
 	srand(time(0));
+	
 	for (int i = 0; i < arraySize; i++)
 	{
-		num = rand() % 100 + 1;
-		arrayInt[i] = num;
+		number = rand() % 100 + 1;
+		arrayInt[i] = number;
 	}
 	cout << "\nRandom array of " << arraySize << ":" << endl;
+	
 	for (int i = 0; i < arraySize; i++)
 	{
 		cout << arrayInt[i] << " ";
@@ -435,6 +453,7 @@ void Task22()
 	int* arrayOfFive = MakeRandomArray(5);
 	int* arrayOfEight = MakeRandomArray(8);
 	int* arrayOfThirteen = MakeRandomArray(13);
+	
 	delete[] arrayOfFive;
 	delete[] arrayOfEight;
 	delete[] arrayOfThirteen;
@@ -443,6 +462,7 @@ void Task22()
 int* ReadArray(int count)
 {
 	int* values = new int[count];
+	
 	for (int i = 0; i < count; i++)
 	{
 		cin >> values[i];
@@ -453,6 +473,7 @@ int* ReadArray(int count)
 int CountPositiveValues(int* values, int count)
 {
 	int result = 0;
+	
 	for (int i = 0; i < count; i++)
 	{
 		if (values[i] > 0)
