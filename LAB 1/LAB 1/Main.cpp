@@ -22,6 +22,11 @@ void AddNewElement(DynamicArray* dynamicArray, int element)
 {
     dynamicArray->length++;
 
+    if (dynamicArray->length >= dynamicArray->capacity)
+    {
+        ResizeArray(dynamicArray);
+    }
+
     dynamicArray->array[dynamicArray->length - 1] = element;
 }
 
@@ -38,6 +43,11 @@ void RemoveElement(DynamicArray* dynamicArray, int index)
 void InsertElement(DynamicArray* dynamicArray, int element, int index)
 {
     dynamicArray->length++;
+
+    if (dynamicArray->length >= dynamicArray->capacity)
+    {
+        ResizeArray(dynamicArray);
+    }
 
     for (int i = dynamicArray->length - 1; i > index; i--)
     {
@@ -61,9 +71,74 @@ void SortArray(DynamicArray* dynamicArray)
     }
 }
 
-void LinearSearch(DynamicArray* array, int element)
+int LinearSearch(DynamicArray* dynamicArray, int element)
 {
+    for (int i = 0; i < dynamicArray->length; i++)
+    {
+        if (dynamicArray->array[i] = element)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
 
+int BinarySearch(DynamicArray* dynamicArray, int element)
+{
+    int first = 0;
+    int last = dynamicArray->length - 1;
+    int middle;
+
+    while (first < last)
+    {
+        middle = (last + first) / 2;
+
+        if (element <= dynamicArray->array[middle])
+        {
+            last = middle;
+        }
+        else
+        {
+            first = middle + 1;
+        }
+    }
+    return (first == dynamicArray->length || dynamicArray->array[first] != element)
+        ? -1 : first;
+}
+
+void ResizeArray(DynamicArray* dynamicArray)
+{
+    dynamicArray->capacity += 8;
+
+    int* tempArray = new int[dynamicArray->capacity];
+
+    for (int i = 0; i < dynamicArray->length; i++)
+    {
+        tempArray[i] = dynamicArray->array[i];
+    }
+    
+    delete[] dynamicArray->array;
+    dynamicArray->array = tempArray;
+}
+
+void GetRandomArray(DynamicArray* dynamicArray, int length)
+{
+    srand(time(0));
+
+    for (int i = 0; i < length; i++)
+    {
+        AddNewElement(dynamicArray, rand());
+    }
+}
+
+void ShowDynamicArray(DynamicArray* dynamicArray)
+{
+    for (int i = 0; i < dynamicArray->length; i++)
+    {
+        cout << dynamicArray->array[i] << " ";
+    }
+
+    cout << endl;
 }
 
 int main()
