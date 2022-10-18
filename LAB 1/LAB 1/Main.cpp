@@ -108,7 +108,8 @@ int BinarySearch(DynamicArray* dynamicArray, int element)
 
 void ResizeArray(DynamicArray* dynamicArray)
 {
-    dynamicArray->capacity += 8;
+    int capacity = 8;
+    dynamicArray->capacity += capacity;
 
     int* tempArray = new int[dynamicArray->capacity];
 
@@ -123,7 +124,7 @@ void ResizeArray(DynamicArray* dynamicArray)
 
 void GetRandomArray(DynamicArray* dynamicArray, int length)
 {
-    srand(time(0));
+    srand(time(NULL));
 
     for (int i = 0; i < length; i++)
     {
@@ -143,6 +144,65 @@ void ShowDynamicArray(DynamicArray* dynamicArray)
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    DynamicArray* array = new DynamicArray;
+
+    int taskNumber;
+    cout << "Enter number of action: ";
+    cin >> taskNumber;
+    cout << "1.Create dynamic array. \n2. Initialize an dynamic array with random numbers."
+        "3. Add new element in dynamic array.\n4. Remove element of dynamic array.\n"
+        "5. Insert element at index into dynamc array.\n6. Sort dynamic array.\n"
+        "7. Linear Search.\n8.Binary search.\n"
+        "9. Show dynamic array.\n" << endl;
+    cout << endl;
+
+    switch (taskNumber)
+    {
+    case 1:
+        CreateDynamicArray(array);
+        break;
+    case 2:
+        GetRandomArray(array, 4);
+        break;
+    case 3:
+        int element;
+        cout << "Enter which element you want to add: ";
+        cin >> element;
+        AddNewElement(array, element);
+        break;
+    case 4:
+        int index;
+        cout << "Enter index which you want to remove: ";
+        cin >> index;
+        RemoveElement(array, index);
+        break;
+    case 5:
+        index;
+        element;
+        cout << "Enter the index of the element where you want to insert the element: ";
+        cin >> index;
+        cout << "Enter which element you want to add: ";
+        cin >> element;
+        InsertElement(array, element, index);
+        break;
+    case 6:
+        SortArray(array);
+        break;
+    case 7:
+        element;
+        cout << "Entee element which you want to find: ";
+        cin >> element;
+        LinearSearch(array, element);
+        break;
+    case 8:
+        element;
+        cout << "Entee element which you want to find: ";
+        cin >> element;
+        BinarySearch(array, element);
+        break;
+    case 9:
+        ShowDynamicArray(array);
+        break;
+    }
 }
 
