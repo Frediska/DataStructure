@@ -22,32 +22,40 @@ void AddNewElement(DynamicArray* dynamicArray, int element)
 {
     dynamicArray->length++;
 
-    /*if (dynamicArray->length >= dynamicArray->capacity)
-    {
-        ResizeArray(dynamicArray);
-    }*/
+    //if (dynamicArray->length >= dynamicArray->capacity)
+    //{
+    //    ResizeArray(dynamicArray);
+    //}
 
     dynamicArray->array[dynamicArray->length - 1] = element;
 }
 
 void RemoveElement(DynamicArray* dynamicArray, int index)
 {
-    for (int i = index; i < dynamicArray->length - 1; i++)
+    if (index > dynamicArray->length - 1 || index < 0)
     {
-        dynamicArray->array[i] = dynamicArray->array[i + 1];
+        cout << "Incorrect value entered!" << endl;
+        return;
     }
+    else
+    {
+        for (int i = index; i < dynamicArray->length - 1; i++)
+        {
+            dynamicArray->array[i] = dynamicArray->array[i + 1];
+        }
 
-    dynamicArray->length--;
+        dynamicArray->length--;
+    }
 }
 
 void InsertElement(DynamicArray* dynamicArray, int element, int index)
 {
     dynamicArray->length++;
 
-    /*if (dynamicArray->length >= dynamicArray->capacity)
-    {
-        ResizeArray(dynamicArray);
-    }*/
+    //if (dynamicArray->length >= dynamicArray->capacity)
+    //{
+    //    ResizeArray(dynamicArray);
+    //}
 
     for (int i = dynamicArray->length - 1; i > index; i--)
     {
@@ -77,7 +85,7 @@ void LinearSearch(DynamicArray* dynamicArray, int element)
 
     for (int i = 0; i < dynamicArray->length; i++)
     {
-        if (dynamicArray->array[i] = element)
+        if (dynamicArray->array[i] == element)
         {
             cout << "Index of this element: " << i << endl;
             flag = true;
@@ -115,8 +123,7 @@ int BinarySearch(DynamicArray* dynamicArray, int element)
 
 //void ResizeArray(DynamicArray* dynamicArray)
 //{
-//    int capacity = 8;
-//    dynamicArray->capacity += capacity;
+//    dynamicArray->capacity += dynamicArray->capacity;
 //
 //    int* tempArray = new int[dynamicArray->capacity];
 //
@@ -127,7 +134,6 @@ int BinarySearch(DynamicArray* dynamicArray, int element)
 //    
 //    delete[] dynamicArray->array;
 //    dynamicArray->array = tempArray;
-//    delete[] tempArray;
 //}
 
 void GetRandomArray(DynamicArray* dynamicArray, int length)
@@ -148,6 +154,13 @@ void ShowDynamicArray(DynamicArray* dynamicArray)
     }
 
     cout << endl;
+}
+
+void ShowHowManyCapacityAndLength(DynamicArray* dynamicArray)
+{
+    cout << dynamicArray->capacity << endl;
+
+    cout << dynamicArray->length << endl;
 }
 
 int main()
@@ -176,7 +189,10 @@ int main()
         }  
         case 2:
         {
-            GetRandomArray(array, 4);
+            int length;
+            cout << "Enter length of your dynamic array: ";
+            cin >> length;
+            GetRandomArray(array, length);
             break;
         } 
         case 3:
@@ -232,6 +248,11 @@ int main()
             ShowDynamicArray(array);
             break;
         }
+        case 10:
+        {
+            ShowHowManyCapacityAndLength(array);
+            break;
+        }
         default:
         {
             cout << "Enter correct value! \n";
@@ -239,6 +260,6 @@ int main()
         }
         }
     }
-    
+    delete array;
 }
 
