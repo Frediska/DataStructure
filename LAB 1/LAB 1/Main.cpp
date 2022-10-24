@@ -8,6 +8,8 @@ struct DynamicArray
     int Capacity;
 };
 
+void ResizeArray(DynamicArray* dynamicArray);
+
 void CreateDynamicArray(DynamicArray* dynamicArray)
 {
     int capacity = 8;
@@ -21,10 +23,10 @@ void AddNewElement(DynamicArray* dynamicArray, int element)
 {
     dynamicArray->Length++;
 
-    //if (dynamicArray->length >= dynamicArray->capacity)
-    //{
-    //    ResizeArray(dynamicArray);
-    //}
+    if (dynamicArray->Length >= dynamicArray->Capacity)
+    {
+        ResizeArray(dynamicArray);
+    }
 
     dynamicArray->Array[dynamicArray->Length - 1] = element;
 }
@@ -132,20 +134,20 @@ void BinarySearch(DynamicArray* dynamicArray, int element)
     }
 }
 
-//void ResizeArray(DynamicArray* dynamicArray)
-//{
-//    dynamicArray->capacity += dynamicArray->capacity;
-//
-//    int* tempArray = new int[dynamicArray->capacity];
-//
-//    for (int i = 0; i < dynamicArray->length; i++)
-//    {
-//        tempArray[i] = dynamicArray->array[i];
-//    }
-//    
-//    delete[] dynamicArray->array;
-//    dynamicArray->array = tempArray;
-//}
+void ResizeArray(DynamicArray* dynamicArray)
+{
+    dynamicArray->Capacity += dynamicArray->Capacity;
+
+    int* tempArray = new int[dynamicArray->Capacity];
+
+    for (int i = 0; i < dynamicArray->Length; i++)
+    {
+        tempArray[i] = dynamicArray->Array[i];
+    }
+    
+    delete[] dynamicArray->Array;
+    dynamicArray->Array = tempArray;
+}
 
 void GetRandomArray(DynamicArray* dynamicArray, int length)
 {
