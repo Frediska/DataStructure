@@ -1,5 +1,4 @@
 ﻿#include <iostream>
-
 using namespace std;
 
 struct DynamicArray
@@ -98,27 +97,39 @@ void LinearSearch(DynamicArray* dynamicArray, int element)
     }
 }
 
-int BinarySearch(DynamicArray* dynamicArray, int element)
+void BinarySearch(DynamicArray* dynamicArray, int element)
 {
-    int first = 0;
-    int last = dynamicArray->length - 1;
+    int left = 0;
+    int right = dynamicArray->length;
     int middle;
+    bool flag = false;
 
-    while (first < last)
+    while ((left <= right) && (flag != true))
     {
-        middle = (last + first) / 2;
+        middle = (left + right) / 2;
 
-        if (element <= dynamicArray->array[middle])
+        if (dynamicArray->array[middle] == element)
         {
-            last = middle;
+            flag = true;
         }
-        else
+        if (dynamicArray->array[middle] > element)
         {
-            first = middle + 1;
+            right = middle - 1;
+        }
+        if (dynamicArray->array[middle] < element)
+        {
+            left = middle + 1;
         }
     }
-    return (first == dynamicArray->length || dynamicArray->array[first] != element)
-        ? -1 : first;
+
+    if (flag == true)
+    {
+        cout << "Element which you search  " << element << " in index: " << middle << endl;
+    }
+    else
+    {
+        cout << "There is no such value in the array." << endl;
+    }
 }
 
 //void ResizeArray(DynamicArray* dynamicArray)
