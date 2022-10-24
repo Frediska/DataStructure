@@ -44,11 +44,13 @@ void Task2()
 void Task3()
 {
 	int array[10] = { 10, 23, -12, 1, 6, -4, -32, 56, 8, 3 };
+	
 	cout << "Main array: " << endl;
 	for (int i = 0; i < 10; i++)
 	{
 		cout << array[i] << " ";
 	}
+	
 	for (int startIndex = 0; startIndex < 9; startIndex++)
 	{
 		int smallestIndex = startIndex;
@@ -59,6 +61,7 @@ void Task3()
 		}
 		swap(array[startIndex], array[smallestIndex]);
 	}
+	
 	cout << "\nSorted array: " << endl;
 	for (int i = 0; i < 10; i++)
 	{
@@ -70,6 +73,7 @@ void Task4()
 {
 	double array[12] = { 10.2, -12.41, 54.93, 23.8, -31.99, -1.23, 84.2, 
 		3.3, 6.12, -12.56, -92.32, 9.1 };
+	
 	cout << "Main array: " << endl;
 	for (int i = 0; i < 12; i++)
 	{
@@ -77,6 +81,7 @@ void Task4()
 	}
 	double searchingValue;
 	int countElements = 0;
+	
 	cout << "\nEnter your value: ";
 	cin >> searchingValue;
 	for (int i = 0; i < 12; i++)
@@ -84,6 +89,7 @@ void Task4()
 		if (array[i] >= searchingValue)
 			countElements += 1;
 	}
+	
 	cout << "Count of array elements which greater or equal than " << 
 		searchingValue << ": " << countElements;
 }
@@ -92,6 +98,7 @@ void Task5()
 {
 	char value;
 	char array[8] = {};
+	
 	cout << "Enter 8 chars in your array: " << endl;
 	for (int i = 0; i < 8; i++)
 	{
@@ -99,11 +106,13 @@ void Task5()
 		cin >> value;
 		array[i] = value;
 	}
+	
 	cout << "Your array is: " << endl;
 	for (int i = 0; i < 8; i++)
 	{
 		cout << array[i] << " ";
 	}
+	
 	cout << "\nAll letters in your array: " << endl;
 	for (int i = 0; i < 8; i++)
 	{
@@ -197,6 +206,7 @@ void Task9()
 void Task10()
 {
 	int a[10] = { 1, 2, 7, -1, 5, 3, -1, 7, 1, 6 };
+	
 	cout << "Size of int type: " << sizeof(int) << endl;
 	
 	for (int i = 0; i < 10; i++)
@@ -205,6 +215,7 @@ void Task10()
 	}
 	
 	cout << endl;
+	
 	cout << "Size of double type: " << sizeof(double) << endl;
 	
 	double b[10] = { 1.0, 2.0, 7.0, -1.0, 5.0, 3.5, -1.8, 7.2, 1.9, 6.2 };
@@ -304,6 +315,7 @@ void Task15()
 void Task16()
 {
 	double* arrayDouble = new double[8]{ 1.0, 15.0, -8.2, -3.5, 12.6, 38.4, -0.5, 4.5 };
+	
 	cout << "Array of double: " << endl;
 	
 	for (int i = 0; i < 8; i++)
@@ -317,6 +329,7 @@ void Task16()
 void Task17()
 {
 	bool* arrayBool = new bool[8]{ true, false, true, true, false, true, false, false};
+	
 	cout << "Array of bool: " << endl;
 
 	for (int i = 0; i < 8; i++)
@@ -340,6 +353,7 @@ void Task18()
 		cin >> arrayChar[i];
 		cout << endl;
 	}
+	
 	cout << "Your char array is: " << endl;
 	
 	for (int i = 0; i < n; i++)
@@ -361,6 +375,7 @@ void Sorting(double* array)
 		}
 		swap(array[startIndex], array[smallestIndex]);
 	}
+	
 	cout << "\nSorted array: " << endl;
 	
 	for (int i = 0; i < 10; i++)
@@ -373,6 +388,7 @@ void Task19()
 {
 	double* arrayDouble = new double[10]{ 13.0, 1.0, - 10.2, - 2.5, 32.6, 
 		18.4, 0.5, - 4.5, 16.7, 9.5 };
+	
 	cout << "Array of double: " << endl;
 	
 	for (int i = 0; i < 10; i++)
@@ -488,13 +504,13 @@ void Task23()
 {
 	int count = 3;
 	int* values = ReadArray(count);
-	cout << "Count is: " << CountPositiveValues(values, count) << " " << 
-		&values << endl;
+	cout << "Count is: " << CountPositiveValues(values, count) << endl;
+
+	delete[] values;
 
 	count = 5;
 	values = ReadArray(count);
-	cout << "Count is: " << CountPositiveValues(values, count) << " " << 
-		&values << endl;
+	cout << "Count is: " << CountPositiveValues(values, count) << endl;
 
 	delete[] values;
 }
