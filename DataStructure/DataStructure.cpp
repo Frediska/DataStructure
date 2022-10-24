@@ -429,6 +429,7 @@ void Task21()
 	{
 		cout << arrayChar[i] << " ";
 	}
+	
 	cout << "\nAll letters in your array: " << endl;
 	
 	for (int i = 0; i < 15; i++)
@@ -455,6 +456,7 @@ int* MakeRandomArray(int arraySize)
 		number = rand() % 100 + 1;
 		arrayInt[i] = number;
 	}
+	
 	cout << "\nRandom array of " << arraySize << ":" << endl;
 	
 	for (int i = 0; i < arraySize; i++)
