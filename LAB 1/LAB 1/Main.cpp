@@ -3,78 +3,78 @@ using namespace std;
 
 struct DynamicArray
 {
-    int* array;
-    int length;
-    int capacity;
+    int* Array;
+    int Length;
+    int Capacity;
 };
 
 void CreateDynamicArray(DynamicArray* dynamicArray)
 {
     int capacity = 8;
 
-    dynamicArray->capacity = capacity;
-    dynamicArray->length = 0;
-    dynamicArray->array = new int[dynamicArray->capacity];
+    dynamicArray->Capacity = capacity;
+    dynamicArray->Length = 0;
+    dynamicArray->Array = new int[dynamicArray->Capacity];
 }
 
 void AddNewElement(DynamicArray* dynamicArray, int element)
 {
-    dynamicArray->length++;
+    dynamicArray->Length++;
 
     //if (dynamicArray->length >= dynamicArray->capacity)
     //{
     //    ResizeArray(dynamicArray);
     //}
 
-    dynamicArray->array[dynamicArray->length - 1] = element;
+    dynamicArray->Array[dynamicArray->Length - 1] = element;
 }
 
 void RemoveElement(DynamicArray* dynamicArray, int index)
 {
-    if (index > dynamicArray->length - 1 || index < 0)
+    if (index > dynamicArray->Length - 1 || index < 0)
     {
         cout << "Incorrect value entered!" << endl;
         return;
     }
     else
     {
-        for (int i = index; i < dynamicArray->length - 1; i++)
+        for (int i = index; i < dynamicArray->Length - 1; i++)
         {
-            dynamicArray->array[i] = dynamicArray->array[i + 1];
+            dynamicArray->Array[i] = dynamicArray->Array[i + 1];
         }
 
-        dynamicArray->length--;
+        dynamicArray->Length--;
     }
 }
 
 void InsertElement(DynamicArray* dynamicArray, int element, int index)
 {
-    dynamicArray->length++;
+    dynamicArray->Length++;
 
     //if (dynamicArray->length >= dynamicArray->capacity)
     //{
     //    ResizeArray(dynamicArray);
     //}
 
-    for (int i = dynamicArray->length - 1; i > index; i--)
+    for (int i = dynamicArray->Length - 1; i > index; i--)
     {
-        dynamicArray->array[i] = dynamicArray->array[i - 1];
+        dynamicArray->Array[i] = dynamicArray->Array[i - 1];
     }
 
-    dynamicArray->array[index] = element;
+    dynamicArray->Array[index] = element;
 }
 
 void SortArray(DynamicArray* dynamicArray)
 {
-    for (int startIndex = 0; startIndex < dynamicArray->length - 1; startIndex++)
+    for (int startIndex = 0; startIndex < dynamicArray->Length - 1; startIndex++)
     {
         int smallestIndex = startIndex;
-        for (int currentIndex = startIndex + 1; currentIndex < dynamicArray->length; currentIndex++)
+        for (int currentIndex = startIndex + 1; currentIndex < dynamicArray->Length; currentIndex++)
         {
-            if (dynamicArray->array[currentIndex] < dynamicArray->array[smallestIndex])
+            if (dynamicArray->Array[currentIndex] < dynamicArray->Array[smallestIndex])
                 smallestIndex = currentIndex;
         }
-        swap(dynamicArray->array[startIndex], dynamicArray->array[smallestIndex]);
+        swap(dynamicArray->Array[startIndex], dynamicArray->Array[smallestIndex]);
     }
 }
 
@@ -82,9 +82,9 @@ void LinearSearch(DynamicArray* dynamicArray, int element)
 {
     bool flag = false;
 
-    for (int i = 0; i < dynamicArray->length; i++)
+    for (int i = 0; i < dynamicArray->Length; i++)
     {
-        if (dynamicArray->array[i] == element)
+        if (dynamicArray->Array[i] == element)
         {
             cout << "Index of this element: " << i << endl;
             flag = true;
@@ -100,7 +100,7 @@ void LinearSearch(DynamicArray* dynamicArray, int element)
 void BinarySearch(DynamicArray* dynamicArray, int element)
 {
     int left = 0;
-    int right = dynamicArray->length;
+    int right = dynamicArray->Length;
     int middle;
     bool flag = false;
 
@@ -108,15 +108,15 @@ void BinarySearch(DynamicArray* dynamicArray, int element)
     {
         middle = (left + right) / 2;
 
-        if (dynamicArray->array[middle] == element)
+        if (dynamicArray->Array[middle] == element)
         {
             flag = true;
         }
-        if (dynamicArray->array[middle] > element)
+        if (dynamicArray->Array[middle] > element)
         {
             right = middle - 1;
         }
-        if (dynamicArray->array[middle] < element)
+        if (dynamicArray->Array[middle] < element)
         {
             left = middle + 1;
         }
@@ -159,9 +159,9 @@ void GetRandomArray(DynamicArray* dynamicArray, int length)
 
 void ShowDynamicArray(DynamicArray* dynamicArray)
 {
-    for (int i = 0; i < dynamicArray->length; i++)
+    for (int i = 0; i < dynamicArray->Length; i++)
     {
-        cout << dynamicArray->array[i] << " ";
+        cout << dynamicArray->Array[i] << " ";
     }
 
     cout << endl;
@@ -169,9 +169,9 @@ void ShowDynamicArray(DynamicArray* dynamicArray)
 
 void ShowHowManyCapacityAndLength(DynamicArray* dynamicArray)
 {
-    cout << dynamicArray->capacity << endl;
+    cout << dynamicArray->Capacity << endl;
 
-    cout << dynamicArray->length << endl;
+    cout << dynamicArray->Length << endl;
 }
 
 int main()
