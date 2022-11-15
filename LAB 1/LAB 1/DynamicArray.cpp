@@ -86,26 +86,25 @@ void SortArray(DynamicArray* dynamicArray)
         swap(dynamicArray->Array[startIndex], dynamicArray->Array[smallestIndex]);
     }
 }
-//TODO:cout
-void LinearSearch(DynamicArray* dynamicArray, int element, bool& flag)
+
+int LinearSearch(DynamicArray* dynamicArray, int element)
 {
+    int index = -1;
     for (int i = 0; i < dynamicArray->Length; i++)
     {
         if (dynamicArray->Array[i] == element)
         {
-            cout << "Index of this element: " << i << endl;
-            flag = true;
+            index = i;
+            break;
         }
     }
-    return;
+    return index;
 }
-//TODO:cout
-void BinarySearch(DynamicArray* dynamicArray, int element)
+
+void BinarySearch(DynamicArray* dynamicArray, int element, int& middle, bool& flag)
 {
     int left = 0;
     int right = dynamicArray->Length;
-    int middle;
-    bool flag = false;
 
     while ((left <= right) && (flag != true))
     {
@@ -124,20 +123,11 @@ void BinarySearch(DynamicArray* dynamicArray, int element)
             left = middle + 1;
         }
     }
-
-    if (flag == true)
-    {
-        cout << "Element which you search  " << element << " in index: " << middle << endl;
-    }
-    else
-    {
-        cout << "There is no such value in the array." << endl;
-    }
 }
 
 void GetRandomArray(DynamicArray* dynamicArray, int length)
 {
-    srand(time(0));
+    srand(time(nullptr));
 
     for (int i = 0; i < length; i++)
     {

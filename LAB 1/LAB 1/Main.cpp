@@ -74,22 +74,36 @@ int main()
         case 7:
         {
             int element;
-            bool flag = false;
+            int index;
             cout << "Enter element which you want to find: ";
             cin >> element;
-            LinearSearch(array, element, flag);           
-            if (flag == false)
+            index = LinearSearch(array, element);
+            if (index == -1)
             {
                 cout << "There is no such value in the array." << endl;
             }
+            else
+            {
+                cout << "Index of this element: " << index << endl;
+            }     
             break;
         }    
         case 8:
         {
             int element;
+            bool flag = false;
+            int middle;
             cout << "Enter element which you want to find: ";
             cin >> element;
-            BinarySearch(array, element);
+            BinarySearch(array, element, middle, flag);
+            if (flag == true)
+            {
+                cout << "Element which you search " << element << " in index: " << middle << endl;
+            }
+            else
+            {
+                cout << "There is no such value in the array." << endl;
+            }
             break;
         }  
         case 9:
