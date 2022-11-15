@@ -144,11 +144,4 @@ void ShowDynamicArray(DynamicArray* dynamicArray)
 
     cout << endl;
 }
-//TODO:cout
-void ShowHowManyCapacityAndLength(DynamicArray* dynamicArray)
-{
-    cout << dynamicArray->Capacity << endl;
-
-    cout << dynamicArray->Length << endl;
-}
 
