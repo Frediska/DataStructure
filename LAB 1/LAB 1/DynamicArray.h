@@ -1,5 +1,5 @@
 #pragma once
-
+//TODO: doxygen комментарии
 struct DynamicArray
 {
     int* Array;
@@ -17,4 +17,4 @@ void BinarySearch(DynamicArray* dynamicArray, int element, int& middle, bool& fl
 void ResizeArray(DynamicArray* dynamicArray);
 void GetRandomArray(DynamicArray* dynamicArray, int length);
 void ShowDynamicArray(DynamicArray* dynamicArray);
-void ShowHowManyCapacityAndLength(DynamicArray* dynamicArray);
+void Show(DynamicArray* dynamicArray);

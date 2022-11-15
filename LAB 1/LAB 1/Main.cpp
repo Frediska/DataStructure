@@ -14,113 +14,128 @@ int main()
     
     while (true)
     {
+        //TODO: sanitizing input
+        int arrayOfTask[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         int taskNumber;
         cout << "Enter number of action: ";
         cin >> taskNumber;
+        for (int i = 0; i < 10; i++)
+        {
+            if (taskNumber == arrayOfTask[i])
+            {
+                break;
+            }
+            else
+            {
+                
+            }
+        }
         cout << endl;
 
         switch (taskNumber)
         {
-        case 1:
-        {
-            CreateDynamicArray(array);
-            break;
-        }  
-        case 2:
-        {
-            int length;
-            cout << "Enter length of your dynamic array: ";
-            cin >> length;
-            GetRandomArray(array, length);
-            break;
-        } 
-        case 3:
-        {
-            int element;
-            cout << "Enter which element you want to add: ";
-            cin >> element;
-            AddNewElement(array, element);
-            break;
-        }    
-        case 4:
-        {
-            int index;
-            bool flag = true;
-            cout << "Enter index which you want to remove: ";
-            cin >> index;
-            RemoveElement(array, index, flag);
-            if (flag == false)
+
+            //TODO: RSDN
+            case 1:
             {
-                cout << "Enter incorrect index!" << endl;
+                CreateDynamicArray(array);
+                break;
+            }  
+            case 2:
+            {
+                int length;
+                cout << "Enter length of your dynamic array: ";
+                cin >> length;
+                GetRandomArray(array, length);
+                break;
+            } 
+            case 3:
+            {
+                int element;
+                cout << "Enter which element you want to add: ";
+                cin >> element;
+                AddNewElement(array, element);
+                break;
+            }    
+            case 4:
+            {
+                int index;
+                bool flag = true;
+                cout << "Enter index which you want to remove: ";
+                cin >> index;
+                RemoveElement(array, index, flag);
+                if (flag == false)
+                {
+                    cout << "Enter incorrect index!" << endl;
+                }
+                break;
+            }   
+            case 5:
+            {
+                int index;
+                int element;
+                cout << "Enter the index of the element where you want to insert the element: ";
+                cin >> index;
+                cout << "Enter which element you want to add: ";
+                cin >> element;
+                InsertElement(array, element, index);
+                break;
+            }    
+            case 6:
+            {
+                SortArray(array);
+                break;
+            }    
+            case 7:
+            {
+                int element;
+                int index;
+                cout << "Enter element which you want to find: ";
+                cin >> element;
+                index = LinearSearch(array, element);
+                if (index == -1)
+                {
+                    cout << "There is no such value in the array." << endl;
+                }
+                else
+                {
+                    cout << "Index of this element: " << index << endl;
+                }     
+                break;
+            }    
+            case 8:
+            {
+                int element;
+                bool flag = false;
+                int middle;
+                cout << "Enter element which you want to find: ";
+                cin >> element;
+                BinarySearch(array, element, middle, flag);
+                if (flag == true)
+                {
+                    cout << "Element which you search " << element << " in index: " << middle << endl;
+                }
+                else
+                {
+                    cout << "There is no such value in the array." << endl;
+                }
+                break;
+            }  
+            case 9:
+            {
+                ShowDynamicArray(array);
+                break;
             }
-            break;
-        }   
-        case 5:
-        {
-            int index;
-            int element;
-            cout << "Enter the index of the element where you want to insert the element: ";
-            cin >> index;
-            cout << "Enter which element you want to add: ";
-            cin >> element;
-            InsertElement(array, element, index);
-            break;
-        }    
-        case 6:
-        {
-            SortArray(array);
-            break;
-        }    
-        case 7:
-        {
-            int element;
-            int index;
-            cout << "Enter element which you want to find: ";
-            cin >> element;
-            index = LinearSearch(array, element);
-            if (index == -1)
+            case 10:
             {
-                cout << "There is no such value in the array." << endl;
+                Show(array);
+                break;
             }
-            else
+            default:
             {
-                cout << "Index of this element: " << index << endl;
-            }     
-            break;
-        }    
-        case 8:
-        {
-            int element;
-            bool flag = false;
-            int middle;
-            cout << "Enter element which you want to find: ";
-            cin >> element;
-            BinarySearch(array, element, middle, flag);
-            if (flag == true)
-            {
-                cout << "Element which you search " << element << " in index: " << middle << endl;
+                cout << "Enter correct value! \n";
+                break;
             }
-            else
-            {
-                cout << "There is no such value in the array." << endl;
-            }
-            break;
-        }  
-        case 9:
-        {
-            ShowDynamicArray(array);
-            break;
-        }
-        case 10:
-        {
-            ShowHowManyCapacityAndLength(array);
-            break;
-        }
-        default:
-        {
-            cout << "Enter correct value! \n";
-            break;
-        }
         }
     }
     delete array;

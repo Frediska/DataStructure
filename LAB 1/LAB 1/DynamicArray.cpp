@@ -13,8 +13,16 @@ void CreateDynamicArray(DynamicArray* dynamicArray)
 
 void ResizeArray(DynamicArray* dynamicArray)
 {
-    dynamicArray->Capacity += dynamicArray->Capacity;
-
+    //TODO: resize работает в одну сторону
+    if (dynamicArray->Length >= dynamicArray->Capacity)
+    {
+        dynamicArray->Capacity += dynamicArray->Capacity;
+    }
+    else
+    {
+        dynamicArray->Capacity -= dynamicArray->Capacity / 2;
+    }
+    
     int* tempArray = new int[dynamicArray->Capacity];
 
     for (int i = 0; i < dynamicArray->Length; i++)
@@ -53,6 +61,11 @@ void RemoveElement(DynamicArray* dynamicArray, int index, bool& flag)
         }
 
         dynamicArray->Length--;
+
+        if (dynamicArray->Length < dynamicArray->Capacity)
+        {
+            ResizeArray(dynamicArray);
+        }
     }
 }
 
@@ -80,8 +93,11 @@ void SortArray(DynamicArray* dynamicArray)
         int smallestIndex = startIndex;
         for (int currentIndex = startIndex + 1; currentIndex < dynamicArray->Length; currentIndex++)
         {
+            //TODO: скобочки
             if (dynamicArray->Array[currentIndex] < dynamicArray->Array[smallestIndex])
+            {
                 smallestIndex = currentIndex;
+            }                
         }
         swap(dynamicArray->Array[startIndex], dynamicArray->Array[smallestIndex]);
     }
@@ -133,6 +149,10 @@ void GetRandomArray(DynamicArray* dynamicArray, int length)
     {
         AddNewElement(dynamicArray, rand());
     }
+    if (dynamicArray->Length >= dynamicArray->Capacity)
+    {
+        ResizeArray(dynamicArray);
+    }
 }
 //TODO:cout
 void ShowDynamicArray(DynamicArray* dynamicArray)
@@ -145,3 +165,9 @@ void ShowDynamicArray(DynamicArray* dynamicArray)
     cout << endl;
 }
 
+void Show(DynamicArray* dynamicArray)
+{
+    cout << dynamicArray->Capacity << endl;
+
+    cout << dynamicArray->Length << endl;
+}

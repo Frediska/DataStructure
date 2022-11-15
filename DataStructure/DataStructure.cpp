@@ -73,7 +73,6 @@ void Task3()
 
 void Task4()
 {
-	//TODO: const
 	const int size = 12;
 
 	double array[size] = { 10.2, -12.41, 54.93, 23.8, -31.99, -1.23, 84.2, 
