@@ -53,10 +53,10 @@ void InsertElement(DynamicArray* dynamicArray, int element, int index)
 {
     dynamicArray->Length++;
 
-    //if (dynamicArray->length >= dynamicArray->capacity)
-    //{
-    //    ResizeArray(dynamicArray);
-    //}
+    if (dynamicArray->Length >= dynamicArray->Capacity)
+    {
+        ResizeArray(dynamicArray);
+    }
 
     for (int i = dynamicArray->Length - 1; i > index; i--)
     {
@@ -182,7 +182,7 @@ int main()
 
     cout << "1. Create dynamic array. \n2. Initialize an dynamic array with random numbers. \n"
         "3. Add new element in dynamic array.\n4. Remove element of dynamic array.\n"
-        "5. Insert element at index into dynamc array.\n6. Sort dynamic array.\n"
+        "5. Insert element at index into dynamic array.\n6. Sort dynamic array.\n"
         "7. Linear Search.\n8. Binary search.\n"
         "9. Show dynamic array.\n" << endl;
     
