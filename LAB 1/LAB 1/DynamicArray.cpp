@@ -154,16 +154,6 @@ void GetRandomArray(DynamicArray* dynamicArray, int length)
         ResizeArray(dynamicArray);
     }
 }
-//TODO:cout
-void ShowDynamicArray(DynamicArray* dynamicArray)
-{
-    for (int i = 0; i < dynamicArray->Length; i++)
-    {
-        cout << dynamicArray->Array[i] << " ";
-    }
-
-    cout << endl;
-}
 
 void Show(DynamicArray* dynamicArray)
 {

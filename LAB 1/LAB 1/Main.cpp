@@ -2,6 +2,15 @@
 #include "DynamicArray.h"
 using namespace std;
 
+int InputValue()
+{
+    char* choice = new char[256];
+    cin >> choice;
+    int value = atoi(choice);
+
+    return value;
+}
+
 int main()
 {
     DynamicArray* array = new DynamicArray;
@@ -15,21 +24,9 @@ int main()
     while (true)
     {
         //TODO: sanitizing input
-        int arrayOfTask[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        int taskNumber;
         cout << "Enter number of action: ";
-        cin >> taskNumber;
-        for (int i = 0; i < 10; i++)
-        {
-            if (taskNumber == arrayOfTask[i])
-            {
-                break;
-            }
-            else
-            {
-                
-            }
-        }
+        int taskNumber = InputValue();
+
         cout << endl;
 
         switch (taskNumber)
@@ -123,7 +120,12 @@ int main()
             }  
             case 9:
             {
-                ShowDynamicArray(array);
+                for (int i = 0; i < array->Length; i++)
+                {
+                    cout << array->Array[i] << " ";
+                }
+
+                cout << endl;
                 break;
             }
             case 10:
