@@ -13,7 +13,6 @@ void CreateDynamicArray(DynamicArray* dynamicArray)
 
 void ResizeArray(DynamicArray* dynamicArray)
 {
-    //TODO: resize работает в одну сторону
     if (dynamicArray->Length >= dynamicArray->Capacity)
     {
         dynamicArray->Capacity += dynamicArray->Capacity;
@@ -46,12 +45,14 @@ void AddNewElement(DynamicArray* dynamicArray, int element)
     dynamicArray->Array[dynamicArray->Length - 1] = element;
 }
 
-void RemoveElement(DynamicArray* dynamicArray, int index, bool& flag)
+//TODO: return flag
+bool RemoveElement(DynamicArray* dynamicArray, int index)
 {
+    bool flag = true;
+
     if (index > dynamicArray->Length - 1 || index < 0)
     {
         flag = false;
-        return;
     }
     else
     {
@@ -66,7 +67,10 @@ void RemoveElement(DynamicArray* dynamicArray, int index, bool& flag)
         {
             ResizeArray(dynamicArray);
         }
+
+        flag = true;
     }
+    return flag;
 }
 
 void InsertElement(DynamicArray* dynamicArray, int element, int index)
@@ -93,7 +97,6 @@ void SortArray(DynamicArray* dynamicArray)
         int smallestIndex = startIndex;
         for (int currentIndex = startIndex + 1; currentIndex < dynamicArray->Length; currentIndex++)
         {
-            //TODO: скобочки
             if (dynamicArray->Array[currentIndex] < dynamicArray->Array[smallestIndex])
             {
                 smallestIndex = currentIndex;
@@ -116,11 +119,14 @@ int LinearSearch(DynamicArray* dynamicArray, int element)
     }
     return index;
 }
-
-void BinarySearch(DynamicArray* dynamicArray, int element, int& middle, bool& flag)
+//TODO: return index
+int BinarySearch(DynamicArray* dynamicArray, int element)
 {
     int left = 0;
     int right = dynamicArray->Length;
+    int middle;
+    int index = -1;
+    bool flag = false;
 
     while ((left <= right) && (flag != true))
     {
@@ -129,6 +135,7 @@ void BinarySearch(DynamicArray* dynamicArray, int element, int& middle, bool& fl
         if (dynamicArray->Array[middle] == element)
         {
             flag = true;
+            index = middle;
         }
         if (dynamicArray->Array[middle] > element)
         {
@@ -139,6 +146,7 @@ void BinarySearch(DynamicArray* dynamicArray, int element, int& middle, bool& fl
             left = middle + 1;
         }
     }
+    return index;
 }
 
 void GetRandomArray(DynamicArray* dynamicArray, int length)

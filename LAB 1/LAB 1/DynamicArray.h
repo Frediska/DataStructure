@@ -1,6 +1,6 @@
 #pragma once
-//TODO: doxygen комментарии
 
+/// @brief Структура динамического массива.
 struct DynamicArray
 {
     int* Array;
@@ -9,7 +9,7 @@ struct DynamicArray
 };
 
 /// @brief Создание динамического массива.
-/// @param dynamicArray 
+/// @param dynamicArray Динамический массив.
 void CreateDynamicArray(DynamicArray* dynamicArray);
 
 /// @brief Добавление нового элемента в конец динамического массива.
@@ -21,7 +21,7 @@ void AddNewElement(DynamicArray* dynamicArray, int element);
 /// @param dynamicArray Динамический масиив.
 /// @param index Индекс элемента.
 /// @param flag Флаг для выслеживания ошибки.
-void RemoveElement(DynamicArray* dynamicArray, int index, bool& flag);
+bool RemoveElement(DynamicArray* dynamicArray, int index);
 
 /// @brief Добавление элемента в динамический массив по индексу.
 /// @param dynamicArray Динамический массив.
@@ -44,7 +44,7 @@ int LinearSearch(DynamicArray* dynamicArray, int element);
 /// @param element Элемент.
 /// @param middle Индекс найденного элемента.
 /// @param flag Флаг для выслеживания индекса.
-void BinarySearch(DynamicArray* dynamicArray, int element, int& middle, bool& flag);
+int BinarySearch(DynamicArray* dynamicArray, int element);
 
 /// @brief Изменение вместимости массива.
 /// @param dynamicArray Динамический массив.
@@ -54,5 +54,7 @@ void ResizeArray(DynamicArray* dynamicArray);
 /// @param dynamicArray Динамический массив.
 /// @param length Длинна массива.
 void GetRandomArray(DynamicArray* dynamicArray, int length);
+
+
 
 void Show(DynamicArray* dynamicArray);

@@ -2,13 +2,25 @@
 #include "DynamicArray.h"
 using namespace std;
 
-int InputValue()
+int CheckingForDigit(const char* text)
 {
-    char* choice = new char[256];
-    cin >> choice;
-    int value = atoi(choice);
+    int element;
 
-    return value;
+    while (true)
+    {
+        cout << text;
+        cin >> element;
+
+        if (!cin.fail())
+        {
+            cin.ignore(cin.rdbuf()->in_avail());
+            return element;
+        }
+
+        cin.clear();
+        cin.ignore(cin.rdbuf()->in_avail());
+        cout << "Enter correct value! \n";
+    }
 }
 
 int main()
@@ -24,15 +36,12 @@ int main()
     while (true)
     {
         //TODO: sanitizing input
-        cout << "Enter number of action: ";
-        int taskNumber = InputValue();
+        int taskNumber = CheckingForDigit("Enter number of action: ");
 
         cout << endl;
 
         switch (taskNumber)
         {
-
-            //TODO: RSDN
             case 1:
             {
                 CreateDynamicArray(array);
@@ -40,27 +49,21 @@ int main()
             }  
             case 2:
             {
-                int length;
-                cout << "Enter length of your dynamic array: ";
-                cin >> length;
+                int length = CheckingForDigit("Enter length of your dynamic array: ");
                 GetRandomArray(array, length);
                 break;
             } 
             case 3:
             {
-                int element;
-                cout << "Enter which element you want to add: ";
-                cin >> element;
+                int element = CheckingForDigit("Enter which element you want to add: ");
                 AddNewElement(array, element);
                 break;
             }    
             case 4:
             {
-                int index;
-                bool flag = true;
-                cout << "Enter index which you want to remove: ";
-                cin >> index;
-                RemoveElement(array, index, flag);
+                int index = CheckingForDigit("Enter index which you want to remove: ");
+                bool flag;
+                flag = RemoveElement(array, index);
                 if (flag == false)
                 {
                     cout << "Enter incorrect index!" << endl;
@@ -69,12 +72,8 @@ int main()
             }   
             case 5:
             {
-                int index;
-                int element;
-                cout << "Enter the index of the element where you want to insert the element: ";
-                cin >> index;
-                cout << "Enter which element you want to add: ";
-                cin >> element;
+                int index = CheckingForDigit("Enter the index of the element where you want to insert the element: ");
+                int element = CheckingForDigit("Enter which element you want to add: ");
                 InsertElement(array, element, index);
                 break;
             }    
@@ -85,10 +84,8 @@ int main()
             }    
             case 7:
             {
-                int element;
+                int element = CheckingForDigit("Enter element which you want to find: ");
                 int index;
-                cout << "Enter element which you want to find: ";
-                cin >> element;
                 index = LinearSearch(array, element);
                 if (index == -1)
                 {
@@ -102,19 +99,16 @@ int main()
             }    
             case 8:
             {
-                int element;
-                bool flag = false;
-                int middle;
-                cout << "Enter element which you want to find: ";
-                cin >> element;
-                BinarySearch(array, element, middle, flag);
-                if (flag == true)
+                int element = CheckingForDigit("Enter element which you want to find: ");
+                int index;
+                index = BinarySearch(array, element);
+                if (index == -1)
                 {
-                    cout << "Element which you search " << element << " in index: " << middle << endl;
+                    cout << "There is no such value in the array." << endl;
                 }
                 else
                 {
-                    cout << "There is no such value in the array." << endl;
+                    cout << "Element which you search " << element << " in index: " << index << endl;
                 }
                 break;
             }  
