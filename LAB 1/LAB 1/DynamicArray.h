@@ -54,7 +54,3 @@ void ResizeArray(DynamicArray* dynamicArray);
 /// @param dynamicArray Динамический массив.
 /// @param length Длинна массива.
 void GetRandomArray(DynamicArray* dynamicArray, int length);
-
-
-
-void Show(DynamicArray* dynamicArray);

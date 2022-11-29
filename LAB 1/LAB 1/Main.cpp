@@ -122,11 +122,6 @@ int main()
                 cout << endl;
                 break;
             }
-            case 10:
-            {
-                Show(array);
-                break;
-            }
             default:
             {
                 cout << "Enter correct value! \n";

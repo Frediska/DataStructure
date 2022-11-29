@@ -162,10 +162,3 @@ void GetRandomArray(DynamicArray* dynamicArray, int length)
         ResizeArray(dynamicArray);
     }
 }
-
-void Show(DynamicArray* dynamicArray)
-{
-    cout << dynamicArray->Capacity << endl;
-
-    cout << dynamicArray->Length << endl;
-}
