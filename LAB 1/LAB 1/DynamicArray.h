@@ -1,10 +1,14 @@
 #pragma once
 
+//TODO: comments
 /// @brief Структура динамического массива.
 struct DynamicArray
 {
+    /// @brief Динамический массив.
     int* Array;
+    /// @brief Длина динамического массива.
     int Length;
+    /// @brief Вместимость динамического массива.
     int Capacity;
 };
 
@@ -19,8 +23,8 @@ void AddNewElement(DynamicArray* dynamicArray, int element);
 
 /// @brief Удаление элемента из динамического массива по индексу.
 /// @param dynamicArray Динамический масиив.
-/// @param index Индекс элемента.
-/// @param flag Флаг для выслеживания ошибки.
+/// @param index Индекс элемента
+/// @return Возвращение значения true или false.
 bool RemoveElement(DynamicArray* dynamicArray, int index);
 
 /// @brief Добавление элемента в динамический массив по индексу.
@@ -42,8 +46,7 @@ int LinearSearch(DynamicArray* dynamicArray, int element);
 /// @brief Бинарный поиск элемента.
 /// @param dynamicArray Динамический массив.
 /// @param element Элемент.
-/// @param middle Индекс найденного элемента.
-/// @param flag Флаг для выслеживания индекса.
+/// @return Возвращение индекса найденного элемента.
 int BinarySearch(DynamicArray* dynamicArray, int element);
 
 /// @brief Изменение вместимости массива.

@@ -45,7 +45,6 @@ void AddNewElement(DynamicArray* dynamicArray, int element)
     dynamicArray->Array[dynamicArray->Length - 1] = element;
 }
 
-//TODO: return flag
 bool RemoveElement(DynamicArray* dynamicArray, int index)
 {
     bool flag = true;
@@ -119,7 +118,7 @@ int LinearSearch(DynamicArray* dynamicArray, int element)
     }
     return index;
 }
-//TODO: return index
+
 int BinarySearch(DynamicArray* dynamicArray, int element)
 {
     int left = 0;

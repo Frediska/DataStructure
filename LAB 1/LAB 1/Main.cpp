@@ -35,7 +35,6 @@ int main()
     
     while (true)
     {
-        //TODO: sanitizing input
         int taskNumber = CheckingForDigit("Enter number of action: ");
 
         cout << endl;
