@@ -1,6 +1,5 @@
 #pragma once
 
-//TODO: comments
 /// @brief Структура динамического массива.
 struct DynamicArray
 {
