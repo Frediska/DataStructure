@@ -46,8 +46,6 @@ int main()
         "9. Linear search.\n10. Show doublelinked list.\n11. Remove doublelinked list.\n"
         "12. Operation for report." << endl;
 
-    InitDoubleLinkedList(list);
-
 	while (true)
 	{
 		int taskNumber = CheckingForDigit("Enter number of action: ");

@@ -4,13 +4,6 @@
 
 using namespace std;
 
-void InitDoubleLinkedList(DoubleLinkedList* list)
-{
-	list->Length = 0;
-	list->Head = nullptr;
-	list->Tail = nullptr;
-}
-
 void AddNewElement(DoubleLinkedList* list, int element)
 {
 	Node* node = new Node();
