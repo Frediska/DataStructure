@@ -4,23 +4,32 @@ using namespace std;
 
 int CheckingForDigit(const char* text)
 {
-    int element;
+    if (text != "")
+    {
+        cout << text << endl;
+    }
 
+    int value;
     while (true)
     {
-        cout << text;
-        cin >> element;
-
-        if (!cin.fail())
+        cin >> value;
+        if (cin.fail())
         {
-            cin.ignore(cin.rdbuf()->in_avail());
-            return element;
+            cin.clear();
+            cin.ignore(32767, '\n');
+            cout << "An error has occurred. Try again." << endl;
+            continue;
         }
 
-        cin.clear();
-        cin.ignore(cin.rdbuf()->in_avail());
-        cout << "Enter correct value! \n";
+        cin.ignore(32767, '\n');
+        if (cin.gcount() > 1)
+        {
+            cout << "An error has occurred. Try again." << endl;
+            continue;
+        }
+        break;
     }
+    return value;
 }
 
 int main()

@@ -1,5 +1,6 @@
-#include <iostream>
+//TODO remove
 #include "DoubleLinkedList.h"
+#include <chrono>
 
 using namespace std;
 
@@ -32,40 +33,47 @@ void AddNewElement(DoubleLinkedList* list, int element)
 	list->Tail = node;
 }
 
-void RemoveElement(DoubleLinkedList* list, int index)
+bool RemoveElement(DoubleLinkedList* list, int index)
 {
-	if (list->Head == nullptr || list->Length - 1 < index)
-	{
-		return;
-	}
+	bool flag = true;
 
-	Node* node = list->Head;
-
-	for (int i = 0; i != index; i++)
+	if (index > list->Length - 1 || index < 0)
 	{
-		node = node->Next;
-	}
-
-	if (node == list->Head)
-	{
-		list->Head = node->Next;
+		flag = false;
 	}
 	else
 	{
-		node->Previous->Next = node->Next;
-	}
+		Node* node = list->Head;
 
-	if (node == list->Tail)
-	{
-		list->Tail = node->Previous;
-	}
-	else
-	{
-		node->Next->Previous = node->Previous;
-	}
+		for (int i = 0; i != index; i++)
+		{
+			node = node->Next;
+		}
 
-	list->Length--;
-	delete node;
+		if (node == list->Head)
+		{
+			list->Head = node->Next;
+		}
+		else
+		{
+			node->Previous->Next = node->Next;
+		}
+
+		if (node == list->Tail)
+		{
+			list->Tail = node->Previous;
+		}
+		else
+		{
+			node->Next->Previous = node->Previous;
+		}
+
+		list->Length--;
+		delete node;
+
+		flag = true;
+	}	
+	return flag;
 }
 
 void InsertInBeginOfList(DoubleLinkedList* list, int element)
@@ -90,64 +98,79 @@ void InsertInBeginOfList(DoubleLinkedList* list, int element)
 	list->Head = node;
 }
 
-void InsertAfterOfElement(DoubleLinkedList* list, int index, int value)
+bool InsertAfterOfElement(DoubleLinkedList* list, int index, int element)
 {
-	if (list->Head == nullptr || list->Length - 1 < index)
+	bool flag = true;
+
+	if (index > list->Length - 1 || index < 0)
 	{
-		return;
+		flag = false;
 	}
-
-	Node* node = new Node();
-	Node* indexNode = GetElement(list, index);
-
-	node->Value = value;
-
-	node->Next = indexNode->Next;
-	node->Previous = indexNode;
-
-	if (list->Length - 1 != index)
+	else
 	{
-		indexNode->Next->Previous = node;
+		if (index == list->Length - 1)
+		{
+			AddNewElement(list, element);
+			return flag;
+		}
+
+		Node* tempNode = new Node();
+		tempNode = list->Head;
+		for (int i = 0; i < index; i++)
+		{
+			tempNode = tempNode->Next;
+		}
+
+		Node* node = new Node();
+		node->Value = element;
+		node->Next = tempNode->Next;
+		tempNode->Next->Previous = node;
+		node->Previous = tempNode;
+		tempNode->Next = node;
+
+		list->Length++;
+
+		flag = true;
 	}
-
-	indexNode->Next = node;
-
-	if (list->Length - 1 == index)
-	{
-		list->Tail = node;
-	}
-
-	list->Length++;
+	return flag;
 }
 
-void InsertBeforeOfElement(DoubleLinkedList* list, int index, int value)
+bool InsertBeforeOfElement(DoubleLinkedList* list, int index, int element)
 {
-	if (list->Head == nullptr || list->Length - 1 < index)
+	bool flag = true;
+
+	if (index > list->Length - 1 || index < 0)
 	{
-		return;
+		flag = false;
 	}
-
-	Node* node = new Node();
-	Node* indexNode = GetElement(list, index);
-
-	node->Value = value;
-
-	node->Next = indexNode;
-	node->Previous = indexNode->Previous;
-
-	if (indexNode->Previous != nullptr)
+	else
 	{
-		indexNode->Previous->Next = node;
+		if (index == 0)
+		{
+			InsertInBeginOfList(list, element);
+			return flag;
+		}
+
+		Node* tempNode = new Node();
+
+		tempNode = list->Head;
+		for (int i = 0; i < index; i++)
+		{
+			tempNode = tempNode->Next;
+		}
+
+		Node* node = new Node();
+		node->Value = element;
+		node->Next = tempNode;
+		node->Previous = tempNode->Previous;
+		tempNode->Previous->Next = node;
+		tempNode->Previous = node;
+
+		list->Length++;
+
+		flag = true;
 	}
-
-	indexNode->Previous = node;
-
-	if (index == 0)
-	{
-		list->Head = node;
-	}
-
-	list->Length++;
+	return flag;
 }
 
 void SwapElements(DoubleLinkedList* list, Node* first, Node* second)
@@ -192,44 +215,53 @@ void InsertionSort(DoubleLinkedList* list)
 
 int LinearSearch(DoubleLinkedList* list, int element)
 {
-	int index = 0;
+	Node* node = list->Head;
+	int index = -1;
 
-	for (Node* iNode = list->Head; iNode != nullptr; iNode = iNode->Next, index++)
+	for (int i = 0; i < list->Length; i++)
 	{
-		if (iNode->Value == element)
+		if (node->Value == element)
 		{
-			return index;
+			index = i;
+			break;
 		}
+
+		node = node->Next;
 	}
 
-	return -1;
+	return index;
 }
 
-Node* GetElement(DoubleLinkedList* list, int index)
+void RemoveList(DoubleLinkedList* list)
 {
-	Node* node;
-
-	if (index < list->Length / 2)
+	if (list->Head == nullptr)
 	{
-		node = list->Head;
-
-		for (int i = 0; i < index; ++i)
-		{
-			node = node->Next;
-		}
-
-		return node;
+		return;
 	}
-	else
+
+	int index = 0;
+	Node* temp = list->Head->Next;
+
+	while (temp != nullptr)
 	{
-		node = list->Tail;
+		delete temp->Previous;
+		list->Length--;
+		temp = temp->Next;
+	}
 
-		for (int i = list->Length - 1; i > index; i--)
-		{
-			node = node->Previous;
-		}
+	delete temp;
+	list->Length--;
+	list->Head = nullptr;
+	list->Tail = nullptr;
+}
 
-		return node;
+void RandomValues(DoubleLinkedList* list, int count)
+{
+	srand(time(nullptr));
+
+	for (int i = 0; i < count; i++)
+	{
+		AddNewElement(list, rand() % 100);
 	}
 }
 
