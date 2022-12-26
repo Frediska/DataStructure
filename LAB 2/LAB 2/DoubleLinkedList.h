@@ -22,16 +22,9 @@ struct DoubleLinkedList
 	Node* Head;
 	/// @brief Указатель конца двусвзяного спсика.
 	Node* Tail;
-	
-	void List()
-	{
-		Length = 0;
-		Head = nullptr;
-		Tail = nullptr;
-	}
 };
 
-/// @brief Инициализация двусвязного списка.
+/// @brief Создание и инициализация двусвязного списка.
 /// @param list Двусвязный список.
 void InitDoubleLinkedList(DoubleLinkedList* list);
 
