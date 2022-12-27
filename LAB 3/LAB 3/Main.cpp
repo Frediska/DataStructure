@@ -566,6 +566,7 @@ void MenuStack()
 				if (stack != nullptr)
 				{
 					ResizeStack(stack);
+					cout << "Stack is resized 2 times more." << endl;
 				}
 				else
 				{
@@ -578,7 +579,6 @@ void MenuStack()
 				if (stack != nullptr)
 				{
 					ShowStack(stack);
-					cout << "Stack is resized 2 times more." << endl;
 				}
 				else
 				{

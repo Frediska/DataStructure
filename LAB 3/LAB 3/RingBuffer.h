@@ -3,6 +3,9 @@
 /// @brief Структура реализации по представлению кольцевого буфера.
 struct RingBuffer
 {
+	/// @brief Число роста кольцевого буфера.
+	int const GrowthFactor = 2;
+
 	/// @brief Свободное мество в кольцевом буфере.
 	int FreeMemory;
 
@@ -20,9 +23,6 @@ struct RingBuffer
 
 	/// @brief Индекс, из которого производится чтение.
 	int IndexOutput;
-
-	/// @brief Число роста кольцевого буфера.
-	int const GrowthFactor = 2;
 };
 
 /// @brief Создает кольцевой буфер.

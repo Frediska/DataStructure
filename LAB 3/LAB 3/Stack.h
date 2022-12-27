@@ -3,6 +3,9 @@
 /// @brief Структура реализации по представлению стека.
 struct Stack
 {
+	/// @brief Число роста стека.
+	const int GrowthFactor = 2;
+
 	/// @brief Буфер.
 	int* Buffer;
 	
@@ -11,9 +14,6 @@ struct Stack
 
 	/// @brief Емкость стека.
 	int Capacity;
-
-	/// @brief Число роста стека.
-	const int GrowthFactor = 2;
 };
 
 /// @brief Создает стек.
