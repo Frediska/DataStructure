@@ -2,11 +2,14 @@
 
 Stack* CreateStack(int size)
 {
-	Stack* stack = new Stack();
+	const int defaulSizeStack = 4;
 
-	if (size < 4)
+	Stack* stack = new Stack();
+	
+	//TODO: const
+	if (size < defaulSizeStack)
 	{
-		size = 4;
+		size = defaulSizeStack;
 	}
 
 	stack->Buffer = new int[size];

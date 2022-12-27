@@ -79,7 +79,6 @@ int main()
             case 4:
             {
                 int index = CheckingForDigit("Enter index which you want to remove: ");
-                //TODO: rsdn
                 bool isIndexOutOfBounds = RemoveElement(list, index);
                 if (!isIndexOutOfBounds)
                 {
@@ -97,7 +96,6 @@ int main()
             {
                 int index = CheckingForDigit("Enter the index of the element before which you want to add a new element: ");
                 int element = CheckingForDigit("Enter which element you want to add: ");
-                //TODO: rsdn
                 bool isIndexOutOfBounds = InsertBeforeOfElement(list, index, element);
                 if (!isIndexOutOfBounds)
                 {
@@ -109,7 +107,6 @@ int main()
             {
                 int index = CheckingForDigit("Enter the index of the element after which you want to add a new element: ");
                 int element = CheckingForDigit("Enter which element you want to add: ");
-                //TODO: rsdn
                 bool isIndexOutOfBounds = InsertAfterOfElement(list, index, element);
                 if (!isIndexOutOfBounds)
                 {
@@ -125,7 +122,6 @@ int main()
             case 9:
             {
                 int element = CheckingForDigit("Enter element which you want to find: ");
-                //TODO: rsdn
                 int index = LinearSearch(list, element);
                 if (index == -1)
                 {

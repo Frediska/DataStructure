@@ -85,6 +85,23 @@ void ShowQueueTwoStacks(QueueOfTwoStacks* queue)
 	cout << endl;
 }
 
+int CheckSize()
+{
+	int size;
+	while (true)
+	{
+		size = CheckingForDigit("Enter the size: ");
+		if (size <= 0)
+		{
+			cout << "Wrong size entered!" << endl;
+			continue;
+		}
+		break;
+	}
+
+	return size;
+}
+
 void MenuQueueOfTwoStacks()
 {
 	QueueOfTwoStacks* queueOfTwoStacks = nullptr;
@@ -106,7 +123,7 @@ void MenuQueueOfTwoStacks()
 			{
 				if (queueOfTwoStacks == nullptr)
 				{
-					int size = CheckingForDigit("Enter the length queue of two stacks: ");
+					int size = CheckSize();
 					queueOfTwoStacks = CreateQueueTwoStacks(size);
 					cout << "Queue of two stacks successfully created:" << endl;
 					ShowQueueTwoStacks(queueOfTwoStacks);
@@ -237,7 +254,7 @@ void MenuQueueRingBuffer()
 			{
 				if (queueRingBuffer == nullptr)
 				{
-					int size = CheckingForDigit("Enter the length queue ring buffer: ");
+					int size = CheckSize();
 					queueRingBuffer = CreateQueueRingBuffer(size);
 					cout << "Queue ring buffer successfully created:" << endl;
 					ShowQueueRingBuffer(queueRingBuffer);
@@ -364,7 +381,7 @@ void MenuRingBuffer()
 			{
 				if (ringBuffer == nullptr)
 				{
-					int size = CheckingForDigit("Enter the length ring buffer: ");
+					int size = CheckSize();
 					ringBuffer = InitRingBuffer(size);
 					cout << "Ring buffer successfully created:" << endl;
 					ShowRingBuffer(ringBuffer);
@@ -498,7 +515,7 @@ void MenuStack()
 			{
 				if (stack == nullptr)
 				{
-					int size = CheckingForDigit("Enter the length stack: ");
+					int size = CheckSize();
 					stack = CreateStack(size);
 					cout << "Stack successfully created:" << endl;
 					ShowStack(stack);

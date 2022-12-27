@@ -1,7 +1,5 @@
 #pragma once
 
-//TODO: comments
-
 /// @brief Реализация структуры по представлению узла списка.
 struct Node
 {
