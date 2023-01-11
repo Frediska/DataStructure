@@ -68,35 +68,34 @@ void ShowHashTable(HashTable* table)
 		cout << endl;
 	}
 	cout << "Count of element:" << table->Count << endl;
+}
 
-	/*Node* current;
-	for (int i = 0; i < table->Size; i++)
+void ShowDictionary(Dictionary* dictionary)
+{
+	Node* current;
+	for (int i = 0; i < dictionary->Table->Size; i++)
 	{
-		current = table->Array[i]->Head;
+		current = dictionary->Table->Array[i]->Head;
 
-		if (current != nullptr)
+		if (current == nullptr)
 		{
-			cout << "[" << i << "] " << current->Key << " : " << current->Value << endl;
+			cout << "";
+			continue;
+		}
+
+		while (current != nullptr)
+		{
+			cout << "Key: " << "[" << current->Key << "]" << " - Value: " << "[" << current->Value << "]";
 			current = current->Next;
-
-			while (current != nullptr)
-			{
-				cout << " >> ";
-				cout << "[" << i << "] " << current->Key << " : " << current->Value << endl;
-				current = current->Next;
-			}
+			cout << endl;
 		}
-		else
-		{
-			cout << "[" << i << "] _ : _" << endl;
-		}
-	}*/
+	}
 }
 
 void MenuDictionary()
 {
-	Dictionary* dictionary = new Dictionary();
-	cout << "Work with Hash Table." << endl;
+	Dictionary* dictionary = CreateDictionary();
+	cout << "Work with Dictionary." << endl;
 
 	while (true)
 	{
@@ -115,7 +114,7 @@ void MenuDictionary()
 			{
 				cout << "This element already exists." << endl;
 			}
-			ShowHashTable(dictionary->Table);
+			ShowDictionary(dictionary);
 			break;
 		}
 		case 2:
@@ -125,7 +124,7 @@ void MenuDictionary()
 			{
 				cout << "This element does not exist." << endl;
 			}
-			ShowHashTable(dictionary->Table);
+			ShowDictionary(dictionary);
 			break;
 		}
 		case 3:

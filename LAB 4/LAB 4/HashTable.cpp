@@ -59,42 +59,24 @@ bool InsertElement(HashTable* table, Node* node, int index)
 	return true;
 }
 
-bool Resolve1Collisions(Node* first, Node* node)
-{
-	while (first != nullptr)
-	{
-		if (first->Key == node->Key && first->Value == node->Value)
-		{
-			return false;
-		}
-
-		if (first->Next == nullptr)
-		{
-			first->Next = node;
-			return true;
-		}
-
-		first = first->Next;
-	}
-}
-
-void ResolveCollisions(Node* first, Node* element)
+void ResolveCollisions(Node* first, Node* node)
 {
 	Node* current = first;
 	while (current->Next != nullptr)
 	{
 		current = current->Next;
 	}
-	current->Next = element;
+	current->Next = node;
 }
 
 int HashFunc(std::string key, int tableSize)
 {
 	int size = key.length();
 	int hash = 0;
+	double A = 0.618033;
 	for (int i = 0; i < size; i++)
 	{
-		hash = (hash * (tableSize - 1) + key[i]) % tableSize;
+		hash = (hash + key[i]) % tableSize;
 	}
 
 	return abs(hash);
@@ -102,60 +84,25 @@ int HashFunc(std::string key, int tableSize)
 
 void Rehashing(HashTable* table)
 {
-	int newSize = table->Size;
-
-	if (table->Size == 1)
-	{
-		newSize++;
-	}
-	else
-	{
-		newSize *= table->GrowthFactor;
-	}
-	HashTable newTable = *CreateHashTable(newSize);
+	HashTable* newTable = CreateHashTable(table->Size * table->GrowthFactor);
 	for (int i = 0; i < table->Size; i++)
 	{
 		Node* current = table->Array[i]->Head;
 
 		while (current != nullptr)
 		{
-			int index = HashFunc(current->Key, newTable.Size);
-			InsertElement(&newTable, current, index);
+			int index = HashFunc(current->Key, newTable->Size);
+			InsertElement(newTable, current, index);
 			table->Array[i]->Head = current->Next;
 			current->Next = nullptr;
 			current = table->Array[i]->Head;
 		}
 	}
-	table->Count = newTable.Count;
-	table->Array = newTable.Array;
-	table->Size = newTable.Size;
-}
 
-//HashTable* Rehashing(HashTable* table)
-//{
-//	HashTable* newTable = CreateHashTable(table->Size * table->GrowthFactor);
-//	for (int i = 0; i < table->Size; i++)
-//	{
-//		Node* current = table->Array[i]->Head;
-//
-//		while (current != nullptr)
-//		{
-//			int index = HashFunc(current->Key, newTable->Size);
-//			InsertElement(newTable, current, index);
-//			table->Array[i]->Head = current->Next;
-//			current->Next = nullptr;
-//			current = table->Array[i]->Head;
-//		}
-//	}
-//
-//	for (int i = 0; i < table->Size; i++)
-//	{
-//		delete table->Array[i];
-//	}
-//	delete[] table->Array;
-//	delete table;
-//	return newTable;
-//}
+	table->Count = newTable->Count;
+	table->Array = newTable->Array;
+	table->Size = newTable->Size;
+}
 
 bool FindElement(HashTable* table, std::string key, std::string& data)
 {
