@@ -46,6 +46,7 @@ string InputString(string outputString)
 
 void ShowHashTable(HashTable* table)
 {
+	cout << "\nHash Table:" << endl;
 	Node* current;
 	for (int i = 0; i < table->Size; i++)
 	{
@@ -67,11 +68,12 @@ void ShowHashTable(HashTable* table)
 		}
 		cout << endl;
 	}
-	cout << "Count of element:" << table->Count << endl;
+	cout << "Count of element:" << table->Count << endl << endl;
 }
 
 void ShowDictionary(Dictionary* dictionary)
 {
+	cout << "\nDictionary:" << endl;
 	Node* current;
 	for (int i = 0; i < dictionary->Table->Size; i++)
 	{
@@ -90,6 +92,7 @@ void ShowDictionary(Dictionary* dictionary)
 			cout << endl;
 		}
 	}
+	cout << endl;
 }
 
 void MenuDictionary()
@@ -110,7 +113,7 @@ void MenuDictionary()
 			string key = InputString("Enter a key: ");
 			string value = InputString("Enter a value: ");
 			Node* node = CreateNode(key, value);
-			if (!InsertElement(dictionary, node, key))
+			if (!AddElement(dictionary, node, key))
 			{
 				cout << "This element already exists." << endl;
 			}
@@ -160,6 +163,7 @@ void MenuDictionary()
 void MenuHashTable()
 {
 	HashTable* table = CreateHashTable(4);
+	Dictionary* dictionary = CreateDictionary();
 
 	cout << "Work with Hash Table." << endl;
 	
@@ -176,10 +180,10 @@ void MenuHashTable()
 				string key = InputString("Enter a key: ");
 				string value = InputString("Enter a value: ");
 				Node* node = CreateNode(key, value);
-				int index = HashFunc(key, table->Size);
-				if (!InsertElement(table, node, index))
+				int index = HashFunction(key, table->Size);
+				if (!AddElement(table, node, index))
 				{
-					cout << "This element already exists." << endl;
+					cout << "This element already exists in Hash Table." << endl;
 				}
 				ShowHashTable(table);
 				break;
@@ -189,7 +193,7 @@ void MenuHashTable()
 				string key = InputString("Enter a key: ");
 				if (!RemoveElement(table, key))
 				{
-					cout << "This element does not exist." << endl;
+					cout << "This element does not exist in Hash Table." << endl;
 				}
 				ShowHashTable(table);
 				break;
@@ -200,11 +204,11 @@ void MenuHashTable()
 				string data;
 				if (FindElement(table, key, data))
 				{
-					cout << "Found information: " << data << endl;
+					cout << "Found information in Hash Table: " << data << endl;
 				}
 				else
 				{
-					cout << "Not Found." << endl;
+					cout << "Not Found information in Hash Table." << endl;
 				}
 				break;
 			}

@@ -29,7 +29,7 @@ Node* CreateNode(std::string key, std::string value)
 	return node;
 }
 
-bool InsertElement(HashTable* table, Node* node, int index)
+bool AddElement(HashTable* table, Node* node, int index)
 {
 	Node* currentNode = table->Array[index]->Head;
 	while (currentNode != nullptr)
@@ -69,7 +69,7 @@ void ResolveCollisions(Node* first, Node* node)
 	current->Next = node;
 }
 
-int HashFunc(std::string key, int tableSize)
+int HashFunction(std::string key, int tableSize)
 {
 	int size = key.length();
 	int hash = 0;
@@ -91,8 +91,8 @@ void Rehashing(HashTable* table)
 
 		while (current != nullptr)
 		{
-			int index = HashFunc(current->Key, newTable->Size);
-			InsertElement(newTable, current, index);
+			int index = HashFunction(current->Key, newTable->Size);
+			AddElement(newTable, current, index);
 			table->Array[i]->Head = current->Next;
 			current->Next = nullptr;
 			current = table->Array[i]->Head;
@@ -106,7 +106,7 @@ void Rehashing(HashTable* table)
 
 bool FindElement(HashTable* table, std::string key, std::string& data)
 {
-	int index = HashFunc(key, table->Size);
+	int index = HashFunction(key, table->Size);
 	Node* current;
 	if (!table->Array[index]->Head)
 	{
@@ -132,7 +132,7 @@ bool FindElement(HashTable* table, std::string key, std::string& data)
 
 bool RemoveElement(HashTable* table, std::string key)
 {
-	int removeIndex = HashFunc(key, table->Size);
+	int removeIndex = HashFunction(key, table->Size);
 	if (table->Array[removeIndex]->Size == 0) return false;
 	Node* current = table->Array[removeIndex]->Head;
 	int count = 0;

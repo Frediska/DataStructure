@@ -7,9 +7,9 @@ Dictionary* CreateDictionary()
 	return dictionary;
 }
 
-bool InsertElement(Dictionary* dictionary, Node* element, std::string key)
+bool AddElement(Dictionary* dictionary, Node* element, std::string key)
 {
-	int newIndex = HashFunc(key, dictionary->Table->Size);
+	int newIndex = HashFunction(key, dictionary->Table->Size);
 	Node* current = dictionary->Table->Array[newIndex]->Head;
 	while (current != nullptr)
 	{
@@ -19,7 +19,7 @@ bool InsertElement(Dictionary* dictionary, Node* element, std::string key)
 		}
 		current = current->Next;
 	}
-	InsertElement(dictionary->Table, element, newIndex);
+	AddElement(dictionary->Table, element, newIndex);
 	return true;
 }
 
