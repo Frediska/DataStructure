@@ -33,15 +33,12 @@ int CheckingForDigit(const char* text)
 	return value;
 }
 
-string InputString(string outputString)
+string InputString(const char* text)
 {
-	if (outputString != "")
-	{
-		cout << outputString;
-	}
-	string str;
-	cin >> str;
-	return str;
+	cout << text;
+	string value;
+	cin >> value;
+	return value;
 }
 
 void ShowHashTable(HashTable* table)

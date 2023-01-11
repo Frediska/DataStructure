@@ -49,7 +49,6 @@ bool AddElement(HashTable* table, Node* node, int index)
 	{
 		ResolveCollisions(table->Array[index]->Head, node);
 	}
-	table->Array[index]->Size++;
 	table->Count++;
 	int fullValue = table->Size * 4 / 3;
 	if (table->Count == fullValue)
