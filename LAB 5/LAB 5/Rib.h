@@ -1,10 +1,17 @@
 #pragma once
 
+/// @brief Ребра дерева.
 struct Rib
 {
+	/// @brief Указатель на предыдущее ребро.
 	Rib* prev;
+
+	/// @brief Стрелка.
 	std::string str;
 
+	/// @brief Создает экземпляр структуры Rib.
+	/// @param prev Предыдущее ребро.
+	/// @param str Стрелка.
 	Rib(Rib* prev, std::string str)
 	{
 		this->prev = prev;
