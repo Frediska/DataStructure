@@ -1,9 +1,10 @@
 #include "BinaryTree.h"
 
-bool AddElement(BinaryTree* tree, int value)
+
+bool AddElement(BinaryTree* tree, int data)
 {
-	BinaryTreeNode* node = new BinaryTreeNode();
-	node->Data = value;
+	BinaryTreeNode* node = new BinaryTreeNode;
+	node->Data = data;
 
 	if (tree->Root == nullptr)
 	{
@@ -11,9 +12,9 @@ bool AddElement(BinaryTree* tree, int value)
 		return true;
 	}
 
-	BinaryTreeNode* parentNode = SearchParentNode(tree->Root, value);
+	BinaryTreeNode* parentNode = SearchParentNode(tree->Root, data);
 
-	if (value >= parentNode->Data)
+	if (data >= parentNode->Data)
 	{
 		parentNode->Right = node;
 	}
@@ -27,17 +28,17 @@ bool AddElement(BinaryTree* tree, int value)
 
 BinaryTreeNode* SearchParentNode(BinaryTreeNode* node, int value)
 {
-	if ((node->Data <= value) && (node->Right == nullptr) ||
-		(node->Data >= value) || (node->Left == nullptr))
+	if ((node->Data < value) && (node->Right == nullptr) ||
+		(node->Data >= value) && (node->Left == nullptr))
 	{
 		return node;
 	}
 
-	if (node->Data <= value)
+	if (node->Data < value)
 	{
 		SearchParentNode(node->Right, value);
 	}
-	else
+	else if (node->Data > value)
 	{
 		SearchParentNode(node->Left, value);
 	}
@@ -110,7 +111,6 @@ BinaryTreeNode* SearchElement(BinaryTreeNode* node, int value)
 	{
 		return nullptr;
 	}
-
 	if (node->Data == value)
 	{
 		return node;

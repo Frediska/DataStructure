@@ -1,7 +1,20 @@
 ﻿#include <iostream>
 #include "BinaryTree.h"
+#include "Trunk.h"
 
 using namespace std;
+
+struct Trunk
+{
+	Trunk* prev;
+	string str;
+
+	Trunk(Trunk* prev, string str)
+	{
+		this->prev = prev;
+		this->str = str;
+	}
+};
 
 int CheckingForDigit(const char* text)
 {
@@ -33,25 +46,56 @@ int CheckingForDigit(const char* text)
 	return value;
 }
 
-void ShowBinaryTree(BinaryTreeNode* node, int level)
+void showTrunks(Trunk* p)
 {
-	if (node)
-	{
-		ShowBinaryTree(node->Right, level + 1);
-
-		for (int i = 0; i < level; i++)
-		{
-			cout << "   ";
-		}
-		cout << node->Data << endl;
-		ShowBinaryTree(node->Left, level + 1);
+	if (p == nullptr) {
+		return;
 	}
+
+	showTrunks(p->prev);
+	cout << p->str;
+}
+
+void ShowBinaryTree(BinaryTreeNode* root, Trunk* prev, bool isLeft)
+{
+	if (root == nullptr) {
+		return;
+	}
+
+	string prev_str = "    ";
+	Trunk* trunk = new Trunk(prev, prev_str);
+
+	ShowBinaryTree(root->Right, trunk, true);
+
+	if (!prev) 
+	{
+		trunk->str = "---";
+	}
+	else if (isLeft)
+	{
+		trunk->str = ".---";
+		prev_str = "   |";
+	}
+	else 
+	{
+		trunk->str = "'---";
+		prev->str = prev_str;
+	}
+
+	showTrunks(trunk);
+	cout << " " << root->Data << endl;
+
+	if (prev) {
+		prev->str = prev_str;
+	}
+	trunk->str = "   |";
+
+	ShowBinaryTree(root->Left, trunk, false);
 }
 
 void main()
 {
 	BinaryTree* binaryTree = new BinaryTree();
-
 	cout << "Work with Binary Tree." << endl;
 
 	while (true)
@@ -79,9 +123,13 @@ void main()
 					break;
 				}
 				int value = CheckingForDigit("Enter value: ");
-				binaryTree->Root = DeleteElement(binaryTree->Root, value);
+				BinaryTreeNode* node = DeleteElement(binaryTree->Root, value);
+				if (node)
+				{
+					cout << "Element not found." << endl;
+				}
 				cout << "--------------------------" << endl;
-				ShowBinaryTree(binaryTree->Root, 0);
+				ShowBinaryTree(binaryTree->Root, nullptr, false);
 				cout << "--------------------------" << endl;
 				break;
 			}
@@ -94,7 +142,8 @@ void main()
 					break;
 				}
 				int value = CheckingForDigit("Enter value: ");
-				if (SearchElement(binaryTree->Root, value))
+				BinaryTreeNode* node = SearchElement(binaryTree->Root, value);
+				if (!node)
 				{
 					cout << "Item is found." << endl;
 				}
@@ -135,7 +184,7 @@ void main()
 					break;
 				}
 				cout << "--------------------------" << endl;
-				ShowBinaryTree(binaryTree->Root, 0);
+				ShowBinaryTree(binaryTree->Root, nullptr, false);
 				cout << "--------------------------" << endl;
 				break;
 			}
