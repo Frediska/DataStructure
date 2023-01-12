@@ -1,7 +1,7 @@
 #include "BinaryTree.h"
 
 
-bool AddElement(BinaryTree* binaryTree, int value)
+void AddElement(BinaryTree* binaryTree, int value)
 {
 	BinaryTreeNode* node = new BinaryTreeNode;
 	node->Data = value;
@@ -9,7 +9,6 @@ bool AddElement(BinaryTree* binaryTree, int value)
 	if (binaryTree->Root == nullptr)
 	{
 		binaryTree->Root = node;
-		return true;
 	}
 
 	BinaryTreeNode* parentNode = SearchParentNode(binaryTree->Root, value);
@@ -22,8 +21,6 @@ bool AddElement(BinaryTree* binaryTree, int value)
 	{
 		parentNode->Left = node;
 	}
-
-	return true;
 }
 
 BinaryTreeNode* SearchParentNode(BinaryTreeNode* node, int value)

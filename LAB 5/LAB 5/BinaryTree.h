@@ -11,8 +11,7 @@ struct BinaryTree
 /// @brief Добавляет элемент в дерево.
 /// @param tree Дерево.
 /// @param value Значение.
-/// @return Возвращает true, если элемент добавлен.
-bool AddElement(BinaryTree* binaryTree, int value);
+void AddElement(BinaryTree* binaryTree, int value);
 
 /// @brief Поиск родительского узла.
 /// @param node Узел.
