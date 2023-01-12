@@ -6,7 +6,7 @@ struct TreapNode
 
 	int Priority;
 
-	TreapNode* Left = nullptr;
+	TreapNode* Left;
 
-	TreapNode* Right = nullptr;
+	TreapNode* Right;
 };

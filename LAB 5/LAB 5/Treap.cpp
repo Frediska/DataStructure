@@ -1,61 +1,13 @@
 #include "Treap.h"
 #include <ctime>
-#include <stdlib.h>
-
-bool AddElement(Treap* treap, int value)
-{
-	TreapNode* node = new TreapNode;
-	node->Data = value;
-
-	if (treap->Root == nullptr)
-	{
-		treap->Root = node;
-		return true;
-	}
-
-	TreapNode* parentNode = SearchParentNode(treap->Root, value);
-
-	if (value >= parentNode->Data)
-	{
-		parentNode->Right = node;
-	}
-	else
-	{
-		parentNode->Left = node;
-	}
-
-	return true;
-}
-
-TreapNode* SearchParentNode(TreapNode* node, int value)
-{
-	if ((node->Data < value) && (node->Right == nullptr) ||
-		(node->Data >= value) && (node->Left == nullptr))
-	{
-		return node;
-	}
-
-	if (node->Data < value)
-	{
-		SearchParentNode(node->Right, value);
-	}
-	else if (node->Data > value)
-	{
-		SearchParentNode(node->Left, value);
-	}
-}
+#include <cstdlib>
 
 TreapNode* SearchElement(TreapNode* node, int value)
 {
-	if (node == nullptr)
-	{
-		return nullptr;
-	}
 	if (node->Data == value)
 	{
 		return node;
 	}
-
 	if ((node->Data < value) && (node->Right != nullptr))
 	{
 		SearchElement(node->Right, value);
@@ -63,6 +15,10 @@ TreapNode* SearchElement(TreapNode* node, int value)
 	else if ((node->Data > value) && (node->Left != nullptr))
 	{
 		SearchElement(node->Left, value);
+	}
+	else
+	{
+		return nullptr;
 	}
 }
 
@@ -72,15 +28,18 @@ void Split(TreapNode* node, int key, TreapNode*& left, TreapNode*& right)
 	{
 		left = right = nullptr;
 	}
-	else if(node->Data > key)
+	else
 	{
-		Split(node->Left, key, left, node->Left);
-		right = node;
-	}
-	else if (node->Data < key)
-	{
-		Split(node->Right, key, node->Right, right);
-		left = node;
+		if (node->Data > key)
+		{
+			Split(node->Left, key, left, node->Left);
+			right = node;
+		}
+		else
+		{
+			Split(node->Right, key, node->Right, right);
+			left = node;
+		}
 	}
 }
 
@@ -116,7 +75,7 @@ void AddElementNotOptimization(TreapNode*& root, int value)
 	Merge(root, root, right);
 }
 
-void InsertOptimization(int value, int priority, TreapNode*& node)
+void AddElementOptimization(int value, int priority, TreapNode*& node)
 {
 	if (node == nullptr)
 	{
@@ -142,12 +101,58 @@ void InsertOptimization(int value, int priority, TreapNode*& node)
 	}
 	else if (value < node->Data)
 	{
-		InsertOptimization(value, priority, node->Left);
+		AddElementOptimization(value, priority, node->Left);
 	}
 	else
 	{
-		InsertOptimization(value, priority, node->Right);
+		AddElementOptimization(value, priority, node->Right);
 	}
 }
+
+void DeleteNotOptimization(TreapNode*& root, int value)
+{
+	TreapNode* left;
+	TreapNode* right;
+	TreapNode* node;
+	Split(root, value - 1, left, right);
+	Split(right, value, node, right);
+	Merge(root, left, right);
+	delete node;
+}
+
+void DeleteOptimization(int value, TreapNode*& element)
+{
+	if (element == nullptr)
+	{
+		return;
+	}
+	if (value == element->Data)
+	{
+		TreapNode* node = element;
+		Merge(node, element->Left, element->Right);
+		delete element;
+	}
+	else if (value < element->Data)
+	{
+		DeleteOptimization(value, element->Left);
+	}
+	else
+	{
+		DeleteOptimization(value, element->Right);
+	}
+}
+
+void DeleteTreap(TreapNode* node)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+	DeleteTreap(node->Left);
+	DeleteTreap(node->Right);
+	delete node;
+}
+
+
 
 
