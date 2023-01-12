@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include "BinaryTree.h"
-#include "Trunk.h"
+#include "Rib.h"
 
 using namespace std;
 
@@ -34,51 +34,51 @@ int CheckingForDigit(const char* text)
 	return value;
 }
 
-void showTrunks(Trunk* p)
+void showRib(Rib* rib)
 {
-	if (p == nullptr) {
+	if (rib == nullptr) {
 		return;
 	}
 
-	showTrunks(p->prev);
-	cout << p->str;
+	showRib(rib->prev);
+	cout << rib->str;
 }
 
-void ShowBinaryTree(BinaryTreeNode* root, Trunk* prev, bool isLeft)
+void ShowBinaryTree(BinaryTreeNode* root, Rib* prev, bool isLeft)
 {
 	if (root == nullptr) {
 		return;
 	}
 
 	string prev_str = "    ";
-	Trunk* trunk = new Trunk(prev, prev_str);
+	Rib* rib = new Rib(prev, prev_str);
 
-	ShowBinaryTree(root->Right, trunk, true);
+	ShowBinaryTree(root->Right, rib, true);
 
 	if (!prev) 
 	{
-		trunk->str = "---";
+		rib->str = "---";
 	}
 	else if (isLeft)
 	{
-		trunk->str = ".---";
+		rib->str = ".---";
 		prev_str = "   |";
 	}
 	else 
 	{
-		trunk->str = "'---";
+		rib->str = "'---";
 		prev->str = prev_str;
 	}
 
-	showTrunks(trunk);
+	showRib(rib);
 	cout << " " << root->Data << endl;
 
 	if (prev) {
 		prev->str = prev_str;
 	}
-	trunk->str = "   |";
+	rib->str = "   |";
 
-	ShowBinaryTree(root->Left, trunk, false);
+	ShowBinaryTree(root->Left, rib, false);
 }
 
 void main()

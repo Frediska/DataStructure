@@ -29,7 +29,7 @@
     <ClInclude Include="BinaryTree.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Trunk.h">
+    <ClInclude Include="Rib.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
