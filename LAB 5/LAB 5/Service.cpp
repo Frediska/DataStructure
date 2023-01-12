@@ -118,16 +118,11 @@ bool TreapIsEmpty(Treap* treap)
 	return true;
 }
 
-bool CheckElement(int value, TreapNode* treap)
-{
-	return SearchElement(treap, value);
-}
-
-bool ForCheckTreap(int value, Treap* treap)
+bool CheckElement(int value, Treap* treap, TreapNode* node)
 {
 	if (treap->Root)
 	{
-		if (CheckElement(value, treap->Root))
+		if (SearchElement(node, value))
 		{
 			cout << "Element with value " << value << " already exists." << endl;
 			return false;

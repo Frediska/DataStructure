@@ -147,7 +147,7 @@ void MenuTreap()
 			{
 				int value = CheckingForDigit("Enter value: ");
 				//TODO: duplication
-				if (!ForCheckTreap(value, treap))
+				if (!CheckElement(value, treap, treap->Root))
 				{
 					break;
 				}
@@ -158,7 +158,7 @@ void MenuTreap()
 			{
 				int value = CheckingForDigit("Enter value: ");
 				//TODO: duplication
-				if (!ForCheckTreap(value, treap))
+				if (!CheckElement(value, treap, treap->Root))
 				{
 					break;
 				}
