@@ -6,7 +6,7 @@ struct BinaryTree
 	BinaryTreeNode* Root = nullptr;
 };
 
-bool AddElement(BinaryTree* tree, int data);
+bool AddElement(BinaryTree* tree, int value);
 BinaryTreeNode* SearchParentNode(BinaryTreeNode* node, int value);
 BinaryTreeNode* DeleteElement(BinaryTreeNode* binaryTree, int value);
 BinaryTreeNode* SearchMinElement(BinaryTreeNode* node);
