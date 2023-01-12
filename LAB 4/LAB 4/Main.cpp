@@ -41,6 +41,11 @@ string InputString(const char* text)
 	return value;
 }
 
+void ForShow(Node* node)
+{
+	cout << "Key: " << "[" << node->Key << "]" << " - Value: " << "[" << node->Value << "]";
+}
+
 void ShowHashTable(HashTable* table)
 {
 	cout << "\nHash Table:" << endl;
@@ -50,19 +55,21 @@ void ShowHashTable(HashTable* table)
 		current = table->Array[i]->Head;
 		if (current == nullptr)
 		{
-			cout << "Key: [ ] - Value: [ ]\n";
+			cout << "Key: [ ] - Value: [ ]" << endl;
 			continue;
 		}
 		if (current->Next == nullptr)
 		{
 			//TODO: duplication
-			cout << "Key: " << "[" << current->Key << "]" << " - Value: " << "[" << current->Value << "]" << endl;
+			ForShow(current);
+			cout << endl;
 			continue;
 		}
 		while (current != nullptr)
 		{
 			//TODO: duplication
-			cout << "Key: " << "[" << current->Key << "]" << " - Value: " << "[" << current->Value << "]" << " -> ";
+			ForShow(current);
+			cout << " -> ";
 			current = current->Next;
 		}
 		cout << endl;
@@ -87,7 +94,7 @@ void ShowDictionary(Dictionary* dictionary)
 		while (current != nullptr)
 		{
 			//TODO: duplication
-			cout << "Key: " << "[" << current->Key << "]" << " - Value: " << "[" << current->Value << "]";
+			ForShow(current);
 			current = current->Next;
 			cout << endl;
 		}
@@ -115,7 +122,7 @@ void MenuDictionary()
 			Node* node = CreateNode(key, value);
 			if (!AddElement(dictionary, node, key))
 			{
-				cout << "This element already exists." << endl;
+				cout << "This element already exists in Dictionary." << endl;
 			}
 			ShowDictionary(dictionary);
 			break;
@@ -125,7 +132,7 @@ void MenuDictionary()
 			string key = InputString("Enter a key: ");
 			if (!RemoveElement(dictionary, key))
 			{
-				cout << "This element does not exist." << endl;
+				cout << "This element does not exist in Dictionary." << endl;
 			}
 			ShowDictionary(dictionary);
 			break;

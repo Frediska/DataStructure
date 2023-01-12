@@ -31,6 +31,7 @@ Node* CreateNode(std::string key, std::string value)
 
 bool AddElement(HashTable* table, Node* node, int index)
 {
+	const float fillFactor = 4.0 / 3.0;
 	Node* currentNode = table->Array[index]->Head;
 	while (currentNode != nullptr)
 	{
@@ -51,7 +52,7 @@ bool AddElement(HashTable* table, Node* node, int index)
 	}
 	//TODO: const
 	table->Count++;
-	int fullValue = table->Size * 4 / 3;
+	int fullValue = table->Size * fillFactor;
 	if (table->Count == fullValue)
 	{
 		Rehashing(table);
