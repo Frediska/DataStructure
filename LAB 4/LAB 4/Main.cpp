@@ -55,11 +55,13 @@ void ShowHashTable(HashTable* table)
 		}
 		if (current->Next == nullptr)
 		{
+			//TODO: duplication
 			cout << "Key: " << "[" << current->Key << "]" << " - Value: " << "[" << current->Value << "]" << endl;
 			continue;
 		}
 		while (current != nullptr)
 		{
+			//TODO: duplication
 			cout << "Key: " << "[" << current->Key << "]" << " - Value: " << "[" << current->Value << "]" << " -> ";
 			current = current->Next;
 		}
@@ -84,6 +86,7 @@ void ShowDictionary(Dictionary* dictionary)
 
 		while (current != nullptr)
 		{
+			//TODO: duplication
 			cout << "Key: " << "[" << current->Key << "]" << " - Value: " << "[" << current->Value << "]";
 			current = current->Next;
 			cout << endl;

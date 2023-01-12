@@ -9,6 +9,7 @@ void AddElement(BinaryTree* binaryTree, int value)
 	if (binaryTree->Root == nullptr)
 	{
 		binaryTree->Root = node;
+		return;
 	}
 
 	BinaryTreeNode* parentNode = SearchParentNode(binaryTree->Root, value);
@@ -21,6 +22,8 @@ void AddElement(BinaryTree* binaryTree, int value)
 	{
 		parentNode->Left = node;
 	}
+
+	return;
 }
 
 BinaryTreeNode* SearchParentNode(BinaryTreeNode* node, int value)
