@@ -51,6 +51,7 @@ bool AddElement(HashTable* table, Node* node, int index)
 		ResolveCollisions(table->Array[index]->Head, node);
 	}
 	//TODO: const
+	table->Array[index]->Size++;
 	table->Count++;
 	int fullValue = table->Size * fillFactor;
 	if (table->Count == fullValue)
@@ -74,7 +75,6 @@ int HashFunction(std::string key, int tableSize)
 {
 	int size = key.length();
 	int hash = 0;
-	double A = 0.618033;
 	for (int i = 0; i < size; i++)
 	{
 		hash = (hash + key[i]) % tableSize;

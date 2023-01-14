@@ -33,12 +33,15 @@ int CheckingForDigit(const char* text)
 	return value;
 }
 
-string InputString(const char* text)
+string InputString(string outputString)
 {
-	cout << text;
-	string value;
-	cin >> value;
-	return value;
+	if (outputString != "")
+	{
+		cout << outputString << endl;
+	}
+	string str;
+	cin >> str;
+	return str;
 }
 
 void ForShow(Node* node)
@@ -132,7 +135,7 @@ void MenuDictionary()
 			string key = InputString("Enter a key: ");
 			if (!RemoveElement(dictionary, key))
 			{
-				cout << "This element does not exist in Dictionary." << endl;
+				cout << "This element does not exist in Hash Table." << endl;
 			}
 			ShowDictionary(dictionary);
 			break;
@@ -170,7 +173,6 @@ void MenuDictionary()
 void MenuHashTable()
 {
 	HashTable* table = CreateHashTable(4);
-	Dictionary* dictionary = CreateDictionary();
 
 	cout << "Work with Hash Table." << endl;
 	
